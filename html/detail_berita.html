@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/detail_berita.css">
+    <title>Detail Berita - Desa Gunung Halu</title>
+</head>
+<body>
+    
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="../foto/logo_desa.png" alt="logo kabupaten bandung barat">
+                <div class="title">
+                    <h1>Desa Gununghalu</h1>
+                    <p>Kabupaten Bandung Barat</p>    
+                </div>
+            </div>
+            <ul class="links">
+                <li class="nav-links"><a href="index.html">Beranda</a></li>
+                <li class="nav-links"><a href="profil.html">Profil Desa</a></li>
+                <li class="nav-links active"><a href="berita.html">Berita</a></li>
+                <li class="nav-links"><a href="potensi.html">Potensi</a></li>
+                <li class="nav-links"><a href="statistik.html">Statistik</a></li>
+                <li class="nav-links"><a href="umkm.html">UMKM</a></li>
+            </ul>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="drop_menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="profil.html">Profil Desa</a></li>
+            <li><a href="berita.html">Berita</a></li>
+            <li><a href="potensi.html">Potensi</a></li>
+            <li><a href="statistik.html">Statistik</a></li>
+            <li><a href="umkm.html">UMKM</a></li>
+        </div>
+    </nav>
+
+
+    <main class="detail-container">
+        <article>
+            <div class="news-header">
+                <h1 id="judulBerita" class="news-title">Memuat Berita...</h1>
+                <div class="news-meta">
+                    <span id="tanggalBerita"><i class="far fa-calendar-alt"></i> -</span>
+                    <span id="penulisBerita"><i class="far fa-user"></i> -</span>
+                </div>
+            </div>
+
+            <img id="gambarBerita" class="news-featured-image" src="" alt="Gambar Berita" onerror="this.style.display='none'">
+
+            <div id="isiBerita" class="news-content">
+                </div>
+
+            <a href="berita.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+            </a>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            © 2026 Desa Gununghalu
+        </div>
+    </footer>
+
+    <script>
+        // 1. DATABASE BERITA (Sesuaikan ID dengan link di halaman berita.html)
+        const databaseBerita = [
+            {
+                id: 1,
+                judul: "Pembangunan Jalan Desa Selesai Tepat Waktu",
+                tanggal: "12 Januari 2026",
+                penulis: "Admin Desa",
+                gambar: "../foto/beranda/berita1.webp", 
+                isi: `
+                    <p><strong>GUNUNGHALU</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                `
+            },
+            {
+                id: 2,
+                judul: "Kunjungan Kerja Bupati Bandung Barat",
+                tanggal: "15 Januari 2026",
+                penulis: "Humas",
+                gambar: "../foto/berita_bupati.jpg",
+                isi: `
+                    <p><strong>GUNUNGHALU</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Integer ut magna nec augue finibus tempor sit amet id leo.</p>
+
+                    <p>Suspendisse potenti. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+                    <p>Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque.</p>
+                `
+            },
+            {
+                id: 3,
+                judul: "Panen Raya Kopi Gununghalu Menembus Pasar Ekspor",
+                tanggal: "20 Januari 2026",
+                penulis: "Kelompok Tani",
+                gambar: "../foto/berita_kopi.jpg",
+                isi: `
+                    <p><strong>GUNUNGHALU</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet, nisl vitae luctus volutpat, dui magna pellentesque ante, at convallis turpis nisl nec diam. Mauris eget nibh at nibh eleifend tincidunt.</p>
+
+                    <p>Curabitur a felis in nunc fringilla tristique. In hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                `
+            }
+        ];
+
+        // 2. LOGIKA PROGRAM
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idBerita = parseInt(urlParams.get('id'));
+            const berita = databaseBerita.find(item => item.id === idBerita);
+
+            if (berita) {
+                // Tampilkan Data
+                document.getElementById('judulBerita').innerText = berita.judul;
+                document.getElementById('tanggalBerita').innerHTML = `<i class="far fa-calendar-alt"></i> ${berita.tanggal}`;
+                document.getElementById('penulisBerita').innerHTML = `<i class="far fa-user"></i> ${berita.penulis}`;
+                document.getElementById('gambarBerita').src = berita.gambar;
+                document.getElementById('isiBerita').innerHTML = berita.isi;
+                document.title = `${berita.judul} - Desa Gununghalu`;
+            } else {
+                // Jika ID Salah
+                document.querySelector('article').innerHTML = `
+                    <div style="text-align:center; padding: 50px;">
+                        <h2>Berita Tidak Ditemukan</h2>
+                        <p>Silakan kembali ke halaman utama.</p>
+                        <br>
+                        <a href="berita.html" class="btn-back">Kembali</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
