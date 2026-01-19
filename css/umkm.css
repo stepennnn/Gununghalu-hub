@@ -409,19 +409,7 @@ nav {
     class: "fa-solid fa-check-circle"; /* Ganti ikon jadi check (opsional logic di js) */
 }
 
-/* Responsif HP */
-@media (max-width: 480px) {
-    .popup-card {
-        width: 85%; /* Lebih lebar di HP */
-        right: 50%;
-        transform: translateX(50%) translateY(20px); /* Center di HP */
-        bottom: 80px;
-    }
-    
-    .popup-card.active {
-        transform: translateX(50%) translateY(0);
-    }
-}
+
 
 
 /* ======================================================================================== */
@@ -506,24 +494,91 @@ nav {
     border-top: 1px solid #444;}
 
 
-/* RESPONSIVE */
+/* ==========================================================================
+   KODE RESPONSIVE FINAL KHUSUS HALAMAN UMKM (HP & TABLET)
+   Paste kode ini di baris paling bawah file CSS Anda
+   ========================================================================== */
+
+/* 1. TABLET / LAPTOP KECIL (Max-width: 992px) */
 @media (max-width: 992px) {
-    .navbar .links {
-        display: none;
+    /* Navbar Toggle */
+    .navbar .links { display: none; }
+    .navbar .toggle_btn { display: block; }
+    .drop_menu { display: block; }
+}
+
+/* 2. HP / MOBILE (Max-width: 768px) */
+@media (max-width: 768px) {
+    
+    /* --- NAVBAR --- */
+    nav { height: 70px; }
+    .navbar { height: 70px; padding: 0 20px; }
+    .navbar .logo img { width: 40px; margin-top: 0; }
+    .navbar .logo .title h1 { font-size: 1.1rem; margin-bottom: 2px; }
+    .navbar .logo .title p { font-size: 10px; }
+
+    .drop_menu { 
+        top: 70px; 
+        width: auto; 
+        left: 1rem; 
+        right: 1rem; 
     }
 
-    .navbar .toggle_btn {
-        display: block;
+    /* --- KONTEN UMKM --- */
+    .umkm {
+        padding: 30px 20px; /* Padding sisi mengecil */
+        margin-top: 70px;   /* Sesuaikan dengan tinggi navbar baru */
+        gap: 30px;
     }
 
-    .drop_menu {
-        display: block;
+    .umkm-title {
+        text-align: center; /* Judul rata tengah di HP */
+    }
+
+    .umkm-title h2 {
+        font-size: 32px; /* Font judul lebih kecil */
+    }
+
+    .umkm-title p {
+        font-size: 16px;
+    }
+
+    .umkm-container {
+        gap: 20px; /* Jarak antar kartu lebih rapat */
+    }
+
+    .umkm-item {
+        width: 100%; /* Kartu memenuhi lebar layar HP */
+        max-width: 320px; /* Batasi agar tidak terlalu lebar */
+    }
+
+    /* --- FOOTER --- */
+    .footer-container {
+        grid-template-columns: 1fr; /* Footer jadi 1 kolom */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-col-1 {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer-logo { 
+        margin-bottom: 10px; 
     }
 }
 
+/* 3. HP KECIL (Max-width: 576px) - KHUSUS POPUP */
 @media (max-width: 576px) {
-    .drop_menu {
-        left: 2rem;
-        width: unset;
+    /* Popup Pengaduan Center */
+    .popup-card {
+        width: 85%;
+        right: 50%;
+        bottom: 80px;
+        transform: translateX(50%) translateY(20px);
+    }
+    .popup-card.active {
+        transform: translateX(50%) translateY(0);
     }
 }

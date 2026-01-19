@@ -20,8 +20,6 @@ a {
     font-weight: 500;
 }
 
-
-/* NAVBAR */
 nav {
     position: fixed;
     top: 0;
@@ -98,7 +96,6 @@ nav {
 
 .navbar .links .nav-links.active a {
     color: #091f4c;
-
 }
 
 .nav-links:hover {
@@ -116,8 +113,6 @@ nav {
     display: none;
 }
 
-
-/* DROP MENU */
 .drop_menu {
     display: none;
     position: absolute;
@@ -142,10 +137,7 @@ nav {
     align-items: center;
     justify-content: center;
 }
-/* ============================================================================ */
 
-
-/* HEADER */
 .header {
     height: auto;                                                        
     display: flex;                              
@@ -159,9 +151,9 @@ nav {
     font-family: "Inter", Arial, sans-serif; 
     font-size: 20px;
     font-weight: 500;
-    text-align: left; /* Mengatur teks ke kiri */
-    align-items: flex-start; /* Untuk elemen flex */
-    justify-content: flex-start; /* Untuk elemen flex */
+    text-align: left; 
+    align-items: flex-start; 
+    justify-content: flex-start; 
     margin-left: 2rem;
     margin-top: 40px; 
 }
@@ -178,8 +170,6 @@ nav {
     color: #000000;  
 }
 
-
-/* MAIN */
 .potensi {
     display: grid;
     align-items: flex-start;
@@ -194,7 +184,6 @@ nav {
     margin: 0 auto;
 }
 
-/* Typography Umum */
 .section-block {
     margin-bottom: 60px;
 }
@@ -204,11 +193,10 @@ nav {
     color: #2c3e50;
     margin-bottom: 25px;
     padding-bottom: 10px;
-    border-bottom: 3px solid #27ae60; /* Garis hijau di bawah judul */
+    border-bottom: 3px solid #27ae60; 
     display: inline-block;
 }
 
-/* 1. GRID CARD (PERTANIAN) */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -223,7 +211,9 @@ nav {
     transition: transform 0.3s;
 }
 
-.potensi-card:hover { transform: translateY(-5px); }
+.potensi-card:hover {
+    transform: translateY(-5px);
+}
 
 .card-img {
     height: 220px;
@@ -234,7 +224,7 @@ nav {
 .card-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Agar gambar tidak gepeng */
+    object-fit: cover; 
 }
 
 .badge {
@@ -248,14 +238,32 @@ nav {
     color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-.badge.gold { background: #f1c40f; color: #333; }
-.badge.green { background: #27ae60; }
 
-.card-content { padding: 20px; }
-.card-content h4 { font-size: 1.2rem; margin-bottom: 10px; color: #333; }
-.card-content p { font-size: 0.95rem; color: #666; line-height: 1.6; }
+.badge.gold {
+    background: #f1c40f;
+    color: #333;
+}
 
-/* 2. SPLIT LAYOUT (ENERGI) */
+.badge.green {
+    background: #27ae60;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
 .energy-block {
     background: #fff;
     border-radius: 15px;
@@ -287,7 +295,6 @@ nav {
     object-fit: cover;
 }
 
-/* 3. PARIWISATA LIST */
 .tour-list {
     display: flex;
     flex-direction: column;
@@ -305,21 +312,32 @@ nav {
 }
 
 .tour-item.reverse {
-    flex-direction: row-reverse; /* Membalik posisi gambar dan teks */
+    flex-direction: row-reverse; 
 }
 
 .tour-img {
-    flex: 0 0 40%; /* Lebar gambar 40% */
+    flex: 0 0 40%; 
     height: 250px;
     border-radius: 8px;
     overflow: hidden;
 }
 
-.tour-img img { width: 100%; height: 100%; object-fit: cover; }
-.tour-info { flex: 1; }
-.tour-info h4 { font-size: 1.4rem; color: #2c3e50; margin-bottom: 15px; }
+.tour-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-/* 4. UMKM BANNER */
+.tour-info {
+    flex: 1;
+}
+
+.tour-info h4 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
 .umkm-banner {
     background: linear-gradient(135deg, #e67e22, #d35400);
     border-radius: 15px;
@@ -333,9 +351,20 @@ nav {
     gap: 30px;
 }
 
-.umkm-icon { font-size: 3rem; opacity: 0.8; }
-.umkm-desc { flex: 1; }
-.umkm-desc h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.umkm-icon {
+    font-size: 3rem;
+    opacity: 0.8;
+}
+
+.umkm-desc {
+    flex: 1;
+}
+
+.umkm-desc h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
 .umkm-img-mini img {
     width: 120px;
     height: 120px;
@@ -344,40 +373,45 @@ nav {
     object-fit: cover;
 }
 
-/* RESPONSIF */
 @media (max-width: 768px) {
-    .potensi-container { padding: 30px 20px; } /* Reset padding di HP */
-    
-    .split-layout, .tour-item, .tour-item.reverse, .umkm-content {
+    .potensi-container {
+        padding: 30px 20px;
+    }
+
+    .split-layout,
+    .tour-item,
+    .tour-item.reverse,
+    .umkm-content {
         flex-direction: column;
         text-align: center;
     }
-    
-    .tour-img { width: 100%; height: 200px; }
-    .split-image { height: 250px; }
-    .umkm-content { text-align: center; }
+
+    .tour-img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .split-image {
+        height: 250px;
+    }
+
+    .umkm-content {
+        text-align: center;
+    }
 }
 
-
-/* PENGADUAN */
-/* =========================================
-   STYLE FLOATING PENGADUAN (POPUP)
-   ========================================= */
-
-/* Area Tombol Mengambang (Pojok Kanan Bawah) */
 .floating-area {
     position: fixed;
     bottom: 20px;
-    right: 20px; /* Jarak dari kanan */
+    right: 20px; 
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 9999; /* Supaya selalu paling depan */
+    z-index: 9999; 
 }
 
-/* Tombol Pengaduan (Pink/Peach) */
 .pengaduan-btn {
-    background-color: #aac5fb; /* Warna pink sesuai gambar */
+    background-color: #aac5fb;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -392,172 +426,33 @@ nav {
     transition: background 0.3s;
 }
 
-.pengaduan-btn:hover { background-color: #79a5ff; }
+.pengaduan-btn:hover {
+    background-color: #79a5ff;
+}
 
-/* --- KARTU POPUP FORM --- */
 .popup-card {
     position: fixed;
-    bottom: 90px; /* Muncul di atas tombol */
+    bottom: 90px;
     right: 20px;
-    width: 350px; /* Lebar form */
+    width: 350px;
     background: white;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 5px 30px rgba(0,0,0,0.15);
     border: 1px solid #f0f0f0;
     z-index: 9998;
-    
-    /* Efek Muncul (Hidden by Default) */
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
     transition: all 0.3s ease-in-out;
 }
 
-/* Class Aktif (Dimunculkan JS) */
 .popup-card.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.popup-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.close-popup {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #999;
-}
-.close-popup:hover { color: red; }
-
-/* Style Input Kecil */
-.form-group-sm { margin-bottom: 15px; }
-.form-group-sm label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 5px;
-}
-
-.req { color: red; }
-
-.form-group-sm input, 
-.form-group-sm textarea, 
-.form-group-sm select {
-    width: 100%;
-    background: #f0f2f5; /* Abu muda */
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    font-family: inherit;
-    box-sizing: border-box;
-}
-
-.form-group-sm input:focus, .form-group-sm textarea:focus {
-    outline: 2px solid #82d655;
-    background: white;
-}
-
-/* Tombol Kirim di Form */
-.btn-submit-popup {
-    width: 100%;
-    background: #82d655; /* Hijau cerah */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-submit-popup:hover { background: #71c348; }
-
-.custom-file-area {
-    display: block;
-    width: 100%;
-    background-color: #f8f9fa;
-    border: 2px dashed #bdc3c7; /* Garis putus-putus */
-    border-radius: 8px;
-    padding: 20px 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-.custom-file-area:hover {
-    background-color: #e8f6ff; /* Warna berubah saat dihover */
-    border-color: #3498db;
-}
-
-.file-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: #7f8c8d;
-}
-
-.file-content i {
-    font-size: 1.5rem;
-    color: #3498db;
-}
-
-.file-content span {
-    font-size: 0.85rem;
-    font-weight: 600;
-    word-break: break-all; /* Agar nama file panjang turun ke bawah */
-}
-
-/* Jika file sudah dipilih (Class ini ditambahkan via JS nanti) */
-.custom-file-area.has-file {
-    background-color: #eaffea;
-    border-color: #2ecc71;
-    border-style: solid;
-}
-
-.custom-file-area.has-file .file-content i {
-    color: #2ecc71; /* Ikon jadi hijau */
-    class: "fa-solid fa-check-circle"; /* Ganti ikon jadi check (opsional logic di js) */
-}
-
-/* Responsif HP */
-@media (max-width: 480px) {
-    .popup-card {
-        width: 85%; /* Lebih lebar di HP */
-        right: 50%;
-        transform: translateX(50%) translateY(20px); /* Center di HP */
-        bottom: 80px;
-    }
-    
-    .popup-card.active {
-        transform: translateX(50%) translateY(0);
-    }
-}
-
-
-/* ======================================================================================== */
-/* FOOTER */
 .footer {
     background-color: #091f4c;
     color: #fff;
@@ -635,11 +530,18 @@ nav {
     margin-top: 10px;
     padding-top: 25px;
     font-size: 14px;
-    border-top: 1px solid #444;}
+    border-top: 1px solid #444;
+}
 
 
-/* RESPONSIVE */
+/* ==========================================================================
+   KODE RESPONSIVE LENGKAP (HP & TABLET)
+   Taruh kode ini di baris paling bawah file CSS Anda
+   ========================================================================== */
+
+/* 1. UNTUK TABLET / LAPTOP KECIL (Layar dibawah 992px) */
 @media (max-width: 992px) {
+    /* Navbar: Sembunyikan menu biasa, munculkan tombol hamburger */
     .navbar .links {
         display: none;
     }
@@ -649,13 +551,144 @@ nav {
     }
 
     .drop_menu {
-        display: block;
+        display: block; /* Pastikan drop menu bisa fungsi */
     }
 }
 
-@media (max-width: 576px) {
+/* 2. UNTUK HP / MOBILE (Layar dibawah 768px) */
+@media (max-width: 768px) {
+    
+    /* --- NAVBAR --- */
+    nav {
+        height: 70px; /* Perkecil navbar */
+    }
+
+    .navbar {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    .navbar .logo img {
+        width: 40px; /* Logo lebih kecil */
+        margin-top: 0;
+    }
+
+    .navbar .logo .title h1 {
+        font-size: 1.1rem;
+        margin-bottom: 2px;
+    }
+
+    .navbar .logo .title p {
+        font-size: 10px;
+    }
+
     .drop_menu {
-        left: 2rem;
-        width: unset;
+        top: 70px; /* Sesuaikan posisi drop menu */
+        width: auto;
+        left: 1rem;
+        right: 1rem;
+    }
+
+    /* --- HEADER (JUDUL HALAMAN) --- */
+    .header {
+        height: auto;
+        flex-direction: column; /* Gambar di atas, Teks di bawah */
+        padding: 30px 20px;
+        margin-top: 70px; /* Sesuaikan dengan tinggi navbar */
+        text-align: center;
+    }
+
+    .header_content {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .header_content h1 {
+        font-size: 32px; /* Font judul diperkecil */
+    }
+
+    .header_content p {
+        font-size: 16px;
+    }
+
+    /* --- KONTEN POTENSI DESA --- */
+    .potensi {
+        padding: 30px 20px;
+        gap: 30px;
+    }
+
+    /* Card Grid (Pertanian) otomatis turun ke bawah karena CSS Grid */
+    
+    /* Energi (Split Layout) - Jadi Atas Bawah */
+    .split-layout {
+        flex-direction: column;
+    }
+    
+    .split-text {
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .split-image {
+        height: 250px; /* Tinggi gambar di HP */
+    }
+
+    /* Pariwisata (List) - Jadi Atas Bawah */
+    .tour-item, 
+    .tour-item.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tour-img {
+        width: 100%;
+        height: 200px;
+    }
+
+    /* UMKM Banner - Center */
+    .umkm-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* --- FOOTER --- */
+    .footer-container {
+        grid-template-columns: 1fr; /* Jadi 1 kolom */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-col-1 {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer-logo {
+        margin-bottom: 10px;
+    }
+}
+
+/* 3. UNTUK HP KECIL (Layar dibawah 576px) - KHUSUS POPUP */
+@media (max-width: 576px) {
+    
+    /* Popup Pengaduan di Tengah Layar */
+    .popup-card {
+        width: 85%;
+        right: 50%;
+        bottom: 80px;
+        transform: translateX(50%) translateY(20px); /* Center Horizontal */
+    }
+
+    .popup-card.active {
+        transform: translateX(50%) translateY(0);
+    }
+
+    /* Drop menu full width */
+    .drop_menu {
+        left: 1rem;
+        right: 1rem;
+        width: auto;
     }
 }

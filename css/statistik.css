@@ -20,8 +20,6 @@ a {
     font-weight: 500;
 }
 
-
-/* NAVBAR */
 nav {
     position: fixed;
     top: 0;
@@ -98,7 +96,6 @@ nav {
 
 .navbar .links .nav-links.active a {
     color: #091f4c;
-
 }
 
 .nav-links:hover {
@@ -116,8 +113,6 @@ nav {
     display: none;
 }
 
-
-/* DROP MENU */
 .drop_menu {
     display: none;
     position: absolute;
@@ -142,10 +137,7 @@ nav {
     align-items: center;
     justify-content: center;
 }
-/* ============================================================================ */
 
-
-/* HEADER */
 .header {
     height: auto;                                                        
     display: flex;                              
@@ -188,7 +180,6 @@ nav {
     height: auto;
 }
 
-/* Layout Utama Grid */
 .dashboard-full {
     display: flex;
     flex-direction: column;
@@ -196,7 +187,6 @@ nav {
     width: 100%;
 }
 
-/* --- GLOBAL CARD STYLES --- */
 .card {
     background: #ffffff;
     border-radius: 12px;
@@ -219,7 +209,6 @@ nav {
     padding-bottom: 10px;
 }
 
-/* --- BARIS 1: SUMMARY CARDS --- */
 .row-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
@@ -243,7 +232,6 @@ nav {
     color: white;
 }
 
-/* Warna-warni Icon */
 .icon-blue { background: linear-gradient(135deg, #3498db, #2980b9); }
 .icon-green { background: linear-gradient(135deg, #2ecc71, #27ae60); }
 .icon-purple { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
@@ -261,7 +249,6 @@ nav {
     color: #333;
 }
 
-/* --- BARIS 2: CHARTS --- */
 .row-charts {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -274,7 +261,6 @@ nav {
     width: 100%;
 }
 
-/* --- BARIS TAMBAHAN: PENDIDIKAN & AGAMA --- */
 .row-secondary-charts {
     display: grid;
     grid-template-columns: 2fr 1fr; 
@@ -282,14 +268,12 @@ nav {
     width: 100%;
 }
 
-/* --- BARIS 3: DETAILS & TABLE --- */
 .row-details {
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 25px;
 }
 
-/* Progress Bar Styles */
 .stat-item {
     margin-bottom: 20px;
 }
@@ -316,7 +300,6 @@ nav {
     border-radius: 6px;
 }
 
-/* Table Styles */
 .table-responsive {
     overflow-x: auto;
 }
@@ -347,52 +330,19 @@ nav {
 }
 
 
-/* --- RESPONSIVE ADJUSTMENT --- */
-@media (max-width: 992px) {
-    .row-charts, .row-secondary-charts, .row-details {
-        grid-template-columns: 1fr; 
-    }
-}
 
-@media (max-width: 768px) {
-    main.statistik {
-        padding: 30px 20px !important; 
-    }
-    
-    .row-cards {
-        grid-template-columns: 1fr; 
-    }
-
-    .summary-card {
-        padding: 15px;
-    }
-    
-    .canvas-wrapper {
-        height: 250px;
-    }
-}
-
-
-
-/* PENGADUAN */
-/* =========================================
-   STYLE FLOATING PENGADUAN (POPUP)
-   ========================================= */
-
-/* Area Tombol Mengambang (Pojok Kanan Bawah) */
 .floating-area {
     position: fixed;
     bottom: 20px;
-    right: 20px; /* Jarak dari kanan */
+    right: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 9999; /* Supaya selalu paling depan */
+    z-index: 9999;
 }
 
-/* Tombol Pengaduan (Pink/Peach) */
 .pengaduan-btn {
-    background-color: #aac5fb; /* Warna pink sesuai gambar */
+    background-color: #aac5fb;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -407,173 +357,34 @@ nav {
     transition: background 0.3s;
 }
 
-.pengaduan-btn:hover { background-color: #79a5ff; }
+.pengaduan-btn:hover {
+    background-color: #79a5ff;
+}
 
-/* --- KARTU POPUP FORM --- */
 .popup-card {
     position: fixed;
-    bottom: 90px; /* Muncul di atas tombol */
+    bottom: 90px;
     right: 20px;
-    width: 350px; /* Lebar form */
+    width: 350px;
     background: white;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 5px 30px rgba(0,0,0,0.15);
     border: 1px solid #f0f0f0;
     z-index: 9998;
-    
-    /* Efek Muncul (Hidden by Default) */
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
     transition: all 0.3s ease-in-out;
 }
 
-/* Class Aktif (Dimunculkan JS) */
 .popup-card.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
 
-.popup-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.close-popup {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #999;
-}
-.close-popup:hover { color: red; }
-
-/* Style Input Kecil */
-.form-group-sm { margin-bottom: 15px; }
-.form-group-sm label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 5px;
-}
-
-.req { color: red; }
-
-.form-group-sm input, 
-.form-group-sm textarea, 
-.form-group-sm select {
-    width: 100%;
-    background: #f0f2f5; /* Abu muda */
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    font-family: inherit;
-    box-sizing: border-box;
-}
-
-.form-group-sm input:focus, .form-group-sm textarea:focus {
-    outline: 2px solid #82d655;
-    background: white;
-}
-
-/* Tombol Kirim di Form */
-.btn-submit-popup {
-    width: 100%;
-    background: #82d655; /* Hijau cerah */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-submit-popup:hover { background: #71c348; }
-
-.custom-file-area {
-    display: block;
-    width: 100%;
-    background-color: #f8f9fa;
-    border: 2px dashed #bdc3c7; /* Garis putus-putus */
-    border-radius: 8px;
-    padding: 20px 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-.custom-file-area:hover {
-    background-color: #e8f6ff; /* Warna berubah saat dihover */
-    border-color: #3498db;
-}
-
-.file-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: #7f8c8d;
-}
-
-.file-content i {
-    font-size: 1.5rem;
-    color: #3498db;
-}
-
-.file-content span {
-    font-size: 0.85rem;
-    font-weight: 600;
-    word-break: break-all; /* Agar nama file panjang turun ke bawah */
-}
-
-/* Jika file sudah dipilih (Class ini ditambahkan via JS nanti) */
-.custom-file-area.has-file {
-    background-color: #eaffea;
-    border-color: #2ecc71;
-    border-style: solid;
-}
-
-.custom-file-area.has-file .file-content i {
-    color: #2ecc71; /* Ikon jadi hijau */
-    class: "fa-solid fa-check-circle"; /* Ganti ikon jadi check (opsional logic di js) */
-}
-
-/* Responsif HP */
-@media (max-width: 480px) {
-    .popup-card {
-        width: 85%; /* Lebih lebar di HP */
-        right: 50%;
-        transform: translateX(50%) translateY(20px); /* Center di HP */
-        bottom: 80px;
-    }
-    
-    .popup-card.active {
-        transform: translateX(50%) translateY(0);
-    }
-}
-
-
-
-/* ======================================================================================== */
-/* FOOTER */
 .footer {
     background-color: #091f4c;
     color: #fff;
@@ -651,27 +462,123 @@ nav {
     margin-top: 10px;
     padding-top: 25px;
     font-size: 14px;
-    border-top: 1px solid #444;}
+    border-top: 1px solid #444;
+}
 
 
-/* RESPONSIVE */
+/* ==========================================================================
+   RESPONSIVE KHUSUS HALAMAN STATISTIK (HP & TABLET)
+   Paste kode ini di baris paling bawah file CSS Anda
+   ========================================================================== */
+
+/* 1. TABLET / LAPTOP KECIL (Max-width: 992px) */
 @media (max-width: 992px) {
-    .navbar .links {
-        display: none;
-    }
+    /* Navbar Toggle */
+    .navbar .links { display: none; }
+    .navbar .toggle_btn { display: block; }
+    .drop_menu { display: block; }
 
-    .navbar .toggle_btn {
-        display: block;
-    }
-
-    .drop_menu {
-        display: block;
+    /* Dashboard Grid jadi 1 Kolom agar tidak sempit */
+    .row-charts,
+    .row-secondary-charts,
+    .row-details {
+        grid-template-columns: 1fr; 
     }
 }
 
+/* 2. HP / MOBILE (Max-width: 768px) */
+@media (max-width: 768px) {
+    
+    /* --- NAVBAR --- */
+    nav { height: 70px; }
+    .navbar { height: 70px; padding: 0 20px; }
+    .navbar .logo img { width: 40px; margin-top: 0; }
+    .navbar .logo .title h1 { font-size: 1.1rem; margin-bottom: 2px; }
+    .navbar .logo .title p { font-size: 10px; }
+    
+    .drop_menu { 
+        top: 70px; 
+        width: auto; 
+        left: 1rem; 
+        right: 1rem; 
+    }
+
+    /* --- HEADER STATISTIK --- */
+    .header {
+        height: auto;
+        flex-direction: column; /* Ubah susunan jadi atas-bawah */
+        padding: 30px 20px;
+        margin-top: 70px;
+        text-align: center;
+    }
+
+    .header_content {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .header_content h1 { 
+        font-size: 32px; /* Judul lebih kecil */
+    }
+
+    /* FIX PENTING: Hapus margin kanan besar biar teks tidak gepeng */
+    .header_content p {
+        margin-right: 0 !important; 
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* --- DASHBOARD CONTENT --- */
+    .statistik { 
+        padding: 30px 20px; /* Kurangi padding container */
+        gap: 30px; 
+    }
+    
+    .dashboard-full { 
+        gap: 20px; 
+    }
+
+    /* Kartu Ringkasan (Atas) */
+    .row-cards { 
+        grid-template-columns: 1fr; /* Jadi 1 kolom ke bawah */
+    }
+    
+    .summary-card { 
+        padding: 15px; 
+    }
+
+    /* Tinggi Grafik di HP */
+    .canvas-wrapper { 
+        height: 250px; 
+    }
+
+    /* --- FOOTER --- */
+    .footer-container { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        gap: 30px; 
+    }
+    .footer-col-1 { 
+        flex-direction: column; 
+        justify-content: center; 
+    }
+    .footer-logo { 
+        margin-bottom: 10px; 
+    }
+}
+
+/* 3. HP KECIL (Max-width: 576px) - KHUSUS POPUP */
 @media (max-width: 576px) {
-    .drop_menu {
-        left: 2rem;
-        width: unset;
+    /* Popup Pengaduan Center di HP */
+    .popup-card {
+        width: 85%;
+        right: 50%;
+        bottom: 80px;
+        transform: translateX(50%) translateY(20px);
+    }
+    .popup-card.active { 
+        transform: translateX(50%) translateY(0); 
     }
 }
