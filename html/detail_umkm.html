@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk UMKM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/detail_umkm.css">
+</head>
+<body>
+
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="../foto/logo_desa.png" alt="logo kabupaten bandung barat">
+                <div class="title">
+                    <h1>Desa Gununghalu</h1>
+                    <p>Kabupaten Bandung Barat</p>    
+                </div>
+            </div>
+            <ul class="links">
+                <li class="nav-links"><a href="index.html">Beranda</a></li>
+                <li class="nav-links"><a href="profil.html">Profil Desa</a></li>
+                <li class="nav-links"><a href="berita.html">Berita</a></li>
+                <li class="nav-links"><a href="potensi.html">Potensi</a></li>
+                <li class="nav-links"><a href="statistik.html">Statistik</a></li>
+                <li class="nav-links active"><a href="umkm.html">UMKM</a></li>
+            </ul>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="drop_menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="profil.html">Profil Desa</a></li>
+            <li><a href="berita.html">Berita</a></li>
+            <li><a href="potensi.html">Potensi</a></li>
+            <li><a href="statistik.html">Statistik</a></li>
+            <li><a href="umkm.html">UMKM</a></li>
+        </div>
+    </nav>
+
+    <main class="product-detail-container">
+        
+        <div class="product-wrapper">
+            <div class="product-image-box">
+                <img id="imgProduk" src="" alt="Gambar Produk">
+            </div>
+
+            <div class="product-info">
+                <span id="kategoriProduk" class="product-category">Kategori</span>
+                <h1 id="namaProduk">Memuat Produk...</h1>
+                <div id="hargaProduk" class="product-price">Rp 0</div>
+
+                <div class="seller-info">
+                    <div class="seller-avatar"><i class="fa-solid fa-store"></i></div>
+                    <div>
+                        <small style="color:#777">Penjual:</small>
+                        <h4 id="namaPenjual" style="margin:0;">-</h4>
+                    </div>
+                </div>
+
+                <p id="deskripsiProduk" class="product-desc">
+                    Memuat deskripsi...
+                </p>
+
+                <a id="btnBeli" href="#" target="_blank" class="btn-wa">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Penjual
+                </a>
+
+                <a href="umkm.html" class="btn-back-product">
+                    <i class="fa-solid fa-arrow-left"></i> Lihat produk lainnya
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Kolom 1 -->
+            <div class="footer-col-1">
+                <img src="../foto/logo_desa.png" alt="Logo Kabupaten Bandung Barat" class="footer-logo">
+                <p><strong>Pemerintah Desa Gununghalu</strong> <br>                        Gununghalu <br>
+                        Kec. Gununghalu <br>
+                        Kabupaten Bandung Barat <br>
+                        Jawa Barat, 40565 <br>
+                    <strong>Kode Wilayah:</strong> 32.17.15.2002</p>
+            </div>
+    
+            <!-- Kolom 2 -->
+            <div class="footer-col">
+                <h3>Hubungi Kami</h3>
+                <p><i class="fas fa-phone"></i> (022) 6950180</p>
+                <p><i class="fas fa-envelope"></i> </p>
+            </div>
+    
+            <!-- Kolom 3 -->
+            <div class="footer-col">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/desagununghalu?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@desagununghalu"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>    
+        </div>
+    
+        <div class="footer-bottom">
+            © 2026 Powered by Gemasains
+        </div>
+    </footer>
+
+    <script>
+        // 1. DATABASE PRODUK
+        // Tips: Format nomor HP harus pakai 62 (kode negara), jangan pakai 0 di depan.
+        const databaseUMKM = [
+            {
+                id: 1,
+                nama: "Kopi Arabika Gununghalu (250gr)",
+                harga: 45000,
+                kategori: "Minuman & Kopi",
+                penjual: "Kelompok Tani Mekar Wangi",
+                noHp: "6281234567890", // Ganti dengan nomor asli penjual
+                gambar: "../foto/umkm/umkm.jpg",
+                deskripsi: "Kopi Arabika asli dari pegunungan Gununghalu yang dipetik merah pilihan. Memiliki cita rasa fruity dan aroma yang kuat. Cocok untuk manual brew V60 atau Tubruk."
+            },
+            {
+                id: 2,
+                nama: "Keripik Singkong Pedas",
+                harga: 15000,
+                kategori: "Makanan Ringan",
+                penjual: "Ibu Juariah Snack",
+                noHp: "6289876543210", 
+                gambar: "../foto/umkm/umkm.jpg",
+                deskripsi: "Keripik singkong renyah dengan bumbu balado pedas manis khas rumahan. Tanpa bahan pengawet dan dibuat segar setiap hari."
+            },
+            {
+                id: 3,
+                nama: "Gula Aren Murni (1kg)",
+                harga: 25000,
+                kategori: "Bahan Dapur",
+                penjual: "Mang Asep Aren",
+                noHp: "6285555555555",
+                gambar: "../foto/umkm/umkm.jpg",
+                deskripsi: "Gula aren asli tanpa campuran, diambil dari pohon aren pilihan di hutan desa. Cocok untuk pemanis kopi, kue, atau masakan tradisional."
+            }
+        ];
+
+        // 2. FUNGSI RENDER
+        document.addEventListener("DOMContentLoaded", function() {
+            // Ambil ID dari URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const idProduk = parseInt(urlParams.get('id'));
+
+            // Cari produk
+            const produk = databaseUMKM.find(item => item.id === idProduk);
+
+            if (produk) {
+                // Format Harga jadi Rupiah (Rp 45.000)
+                const hargaFormat = new Intl.NumberFormat('id-ID', { 
+                    style: 'currency', 
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(produk.harga);
+
+                // Isi Data ke HTML
+                document.getElementById('namaProduk').innerText = produk.nama;
+                document.getElementById('kategoriProduk').innerText = produk.kategori;
+                document.getElementById('hargaProduk').innerText = hargaFormat;
+                document.getElementById('namaPenjual').innerText = produk.penjual;
+                document.getElementById('deskripsiProduk').innerText = produk.deskripsi;
+                document.getElementById('imgProduk').src = produk.gambar;
+
+                // --- LOGIKA LINK WHATSAPP ---
+                // Kita buat pesan otomatis: "Halo, saya mau pesan [Nama Produk]..."
+                const pesan = `Halo ${produk.penjual}, saya tertarik membeli produk *${produk.nama}* yang ada di Website Desa Gununghalu. Apakah stok masih tersedia?`;
+                
+                // Encode pesan agar bisa masuk URL
+                const linkWA = `https://wa.me/${produk.noHp}?text=${encodeURIComponent(pesan)}`;
+                
+                // Set link ke tombol
+                document.getElementById('btnBeli').href = linkWA;
+
+                document.title = `${produk.nama} - UMKM Gununghalu`;
+
+            } else {
+                // Jika produk tidak ditemukan
+                document.querySelector('.product-wrapper').innerHTML = `
+                    <div style="text-align:center; width:100%; padding:50px;">
+                        <h2>Produk Tidak Ditemukan</h2>
+                        <a href="umkm.html">Kembali ke Daftar Produk</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+
+</body>
+</html>

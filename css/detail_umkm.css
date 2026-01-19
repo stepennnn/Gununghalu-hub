@@ -1,6 +1,7 @@
 /* =========================================
-   STYLE KHUSUS HALAMAN DETAIL BERITA
+   STYLE KHUSUS DETAIL UMKM / PRODUK
    ========================================= */
+
 
 * {
     margin: 0;
@@ -148,86 +149,122 @@ nav {
 }
 
 
-/* Container Utama */
-.detail-container {
-    padding: 50px 80px;      /* Sesuai request margin/padding Anda */
-    max-width: 1000px;       /* Batas lebar agar teks nyaman dibaca */
-    margin: 0 auto;          /* Posisi tengah */
+/* Container Utama Detail Produk */
+.product-detail-container {
+    padding: 50px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
     background: #fff;
     min-height: 80vh;
     margin-top: 90px;
 }
 
-/* Header (Judul & Info) */
-.news-header {
-    margin-bottom: 30px;
+/* Layout Grid: Kiri Gambar, Kanan Info */
+.product-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Bagi 2 kolom rata */
+    gap: 50px;
+    align-items: start;
+}
+
+/* Kolom Kiri: Gambar */
+.product-image-box {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #f9f9f9;
+}
+
+.product-image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Kolom Kanan: Info */
+.product-info h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.product-category {
+    display: inline-block;
+    background: #ecf0f1;
+    color: #7f8c8d;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #27ae60; /* Warna Hijau Uang */
+    margin-bottom: 25px;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
 }
 
-.news-title {
-    font-size: 2.2rem;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    line-height: 1.3;
-    font-weight: 700;
+.product-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
 }
 
-.news-meta {
-    color: #7f8c8d;
-    font-size: 0.95rem;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.news-meta span {
+.seller-info {
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
-    gap: 8px; /* Jarak antara ikon dan teks */
+    gap: 15px;
 }
 
-/* Gambar Utama */
-.news-featured-image {
-    width: 100%;
-    height: 450px;           /* Tinggi gambar fixed agar rapi */
-    object-fit: cover;       /* Agar gambar tidak gepeng */
-    border-radius: 12px;
-    margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Isi Berita (Konten Lorem) */
-.news-content {
-    font-size: 1.1rem;
-    line-height: 1.8;        /* Spasi antar baris agar enak dibaca */
-    color: #333;
-    text-align: justify;     /* Rata kiri-kanan */
-    margin-bottom: 40px;
-}
-
-.news-content p {
-    margin-bottom: 25px;     /* Jarak antar paragraf */
-}
-
-/* Tombol Kembali */
-.btn-back {
-    display: inline-flex;
+.seller-avatar {
+    width: 50px;
+    height: 50px;
+    background: #3498db;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Tombol WhatsApp */
+.btn-wa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 12px 25px;
-    background-color: #2c3e50;
+    background-color: #25D366; /* Warna Resmi WA */
     color: white;
     text-decoration: none;
+    padding: 15px 30px;
     border-radius: 8px;
-    font-weight: 600;
-    transition: 0.3s ease;
-    transform: 0.2s;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%; /* Tombol lebar penuh */
+    box-sizing: border-box;
 }
 
-.btn-back:hover {
-    background-color: #34495e;
-    transform: translateX(-5px); /* Efek gerak ke kiri dikit */
+.btn-wa:hover {
+    background-color: #128C7E;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.btn-back-product {
+    display: inline-block;
+    margin-top: 20px;
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 0.9rem;
 }
 
 
@@ -314,23 +351,8 @@ nav {
 }
 
 
-/* Responsif untuk HP */
+/* Responsif HP */
 @media (max-width: 768px) {
-    .detail-container {
-        padding: 30px 20px;  /* Padding mengecil di HP */
-    }
-
-    .news-title {
-        font-size: 1.6rem;
-    }
-
-    .news-featured-image {
-        height: 250px;
-    }
-
-    .news-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+    .product-detail-container { padding: 30px 20px; }
+    .product-wrapper { grid-template-columns: 1fr; gap: 30px; } /* Jadi 1 kolom */
 }
