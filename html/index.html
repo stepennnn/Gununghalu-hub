@@ -146,6 +146,61 @@
                 <a href="berita.html" class="lihat-semua">Lihat Semua Berita <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
+
+        <!-- PENGADUAN -->
+        <div class="floating-area">
+            <button class="pengaduan-btn" onclick="togglePengaduan()">
+                <i class="fa-solid fa-headset"></i> Pengaduan
+            </button>
+        </div>
+    
+        <div id="popupPengaduan" class="popup-card">
+            <div class="popup-header">
+                <h3>Form Pengaduan</h3>
+                <span class="close-popup" onclick="togglePengaduan()">&times;</span>
+            </div>
+            
+            <form id="formFloating">
+                <div class="form-group-sm">
+                    <label>Nama <span class="req">*</span></label>
+                    <input type="text" id="popNama" placeholder="Masukkan nama Anda" required>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Nomor Telepon/WA <span class="req">*</span></label>
+                    <input type="number" id="popWa" placeholder="Nomor WA aktif" required>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Kategori <span class="req">*</span></label>
+                    <div class="select-wrap-sm">
+                        <select id="popKategori" required>
+                            <option value="" disabled selected>Pilih kategori...</option>
+                            <option value="Administrasi">Administrasi</option>
+                            <option value="Infrastruktur">Infrastruktur</option>
+                            <option value="Keamanan">Keamanan</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Pengaduan <span class="req">*</span></label>
+                    <textarea id="popPesan" rows="3" placeholder="Tulis aduan Anda..." required></textarea>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Lampiran</label>
+                    <div class="fake-upload">
+                        <i class="fa-regular fa-file"></i> Unggah foto (Opsional)
+                    </div>
+                </div>
+    
+                <button type="submit" class="btn-submit-popup">
+                    <i class="fa-regular fa-paper-plane"></i> Kirim
+                </button>
+            </form>
+        </div>
     </main>
 
     <footer class="footer">
@@ -196,6 +251,39 @@
             ? 'fa-solid fa-xmark'
             : 'fa-solid fa-bars'
         }
+
+        // PENGADUAN
+        function togglePengaduan() {
+            const popup = document.getElementById('popupPengaduan');
+            popup.classList.toggle('active');
+        }
+
+        document.getElementById('formFloating').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ambil Data
+            const nama = document.getElementById('popNama').value;
+            const wa = document.getElementById('popWa').value;
+            const kat = document.getElementById('popKategori').value;
+            const pesan = document.getElementById('popPesan').value;
+            
+            // Nomor Admin (GANTI DISINI)
+            const nomorAdmin = "6281234567890"; 
+
+            // Format Pesan WA
+            const textWA = `*PENGADUAN VIA WEBSITE*%0A` +
+                           `---------------------------%0A` +
+                           `👤 *Nama:* ${nama}%0A` +
+                           `📱 *No HP:* ${wa}%0A` +
+                           `📂 *Kategori:* ${kat}%0A` +
+                           `📝 *Pesan:*%0A${pesan}`;
+
+            // Buka WA
+            window.open(`https://wa.me/${nomorAdmin}?text=${textWA}`, '_blank');
+            
+            // Tutup Popup setelah kirim
+            togglePengaduan(); 
+        });
     </script>
 </body>
 </html>
