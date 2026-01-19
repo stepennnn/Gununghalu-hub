@@ -144,7 +144,68 @@
                     </div>
                 </div>
             </section>
-        
+        </div>
+
+        <!-- PENGADUAN -->
+        <div class="floating-area">
+            <button class="pengaduan-btn" onclick="togglePengaduan()">
+                <i class="fa-solid fa-headset"></i> Pengaduan
+            </button>
+        </div>
+    
+        <div id="popupPengaduan" class="popup-card">
+            <div class="popup-header">
+                <h3>Form Pengaduan</h3>
+                <span class="close-popup" onclick="togglePengaduan()">&times;</span>
+            </div>
+            
+            <form id="formFloating">
+                <div class="form-group-sm">
+                    <label>Nama <span class="req">*</span></label>
+                    <input type="text" id="popNama" placeholder="Masukkan nama Anda" required>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Nomor Telepon/WA <span class="req">*</span></label>
+                    <input type="number" id="popWa" placeholder="Nomor WA aktif" required>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Kategori <span class="req">*</span></label>
+                    <div class="select-wrap-sm">
+                        <select id="popKategori" required>
+                            <option value="" disabled selected>Pilih kategori...</option>
+                            <option value="Administrasi">Administrasi</option>
+                            <option value="Infrastruktur">Infrastruktur</option>
+                            <option value="Keamanan">Keamanan</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Pengaduan <span class="req">*</span></label>
+                    <textarea id="popPesan" rows="3" placeholder="Tulis aduan Anda..." required></textarea>
+                </div>
+    
+                <div class="form-group-sm">
+                    <label>Lampiran Bukti</label>
+                    
+                    <input type="file" id="popFile" accept="image/*,.pdf" hidden>
+                    
+                    <label for="popFile" class="custom-file-area">
+                        <div class="file-content">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span id="fileNameDisplay">Klik untuk unggah foto/PDF</span>
+                        </div>
+                    </label>
+                    <small style="color:#888; font-size:0.7rem;">Maksimal ukuran 2MB</small>
+                </div>
+    
+                <button type="submit" class="btn-submit-popup">
+                    <i class="fa-regular fa-paper-plane"></i> Kirim
+                </button>
+            </form>
         </div>
     </main>
 
@@ -200,6 +261,84 @@
             ? 'fa-solid fa-xmark'
             : 'fa-solid fa-bars'
         }
+
+        // PENGADUAN
+        // 1. Toggle Buka/Tutup Popup
+        function togglePengaduan() {
+            const popup = document.getElementById('popupPengaduan');
+            popup.classList.toggle('active');
+        }
+
+        // 2. Logic Handle Tampilan File Upload
+        const fileInput = document.getElementById('popFile');
+        const fileLabel = document.querySelector('.custom-file-area');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const iconDisplay = document.querySelector('.file-content i');
+
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                // Jika ada file dipilih
+                const name = this.files[0].name;
+                
+                // Ubah Tampilan
+                fileNameDisplay.textContent = name; // Tampilkan nama file
+                fileLabel.classList.add('has-file'); // Ganti warna border jadi hijau
+                iconDisplay.className = "fa-solid fa-check-circle"; // Ganti ikon jadi centang
+            } else {
+                // Jika batal pilih
+                fileNameDisplay.textContent = "Klik untuk unggah foto/PDF";
+                fileLabel.classList.remove('has-file');
+                iconDisplay.className = "fa-solid fa-cloud-arrow-up";
+            }
+        });
+
+        // 3. Logic Submit Form (Persiapan ke Admin)
+        document.getElementById('formFloating').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ambil Data Input
+            const nama = document.getElementById('popNama').value;
+            const wa = document.getElementById('popWa').value;
+            const kat = document.getElementById('popKategori').value;
+            const pesan = document.getElementById('popPesan').value;
+            const file = document.getElementById('popFile').files[0]; // Ambil Objek File Asli
+
+            // --- PERSIAPAN UNTUK DIKIRIM KE ADMIN (BACKEND) ---
+            // Nanti saat ada backend, kita pakai FormData
+            const formData = new FormData();
+            formData.append('nama', nama);
+            formData.append('whatsapp', wa);
+            formData.append('kategori', kat);
+            formData.append('pesan', pesan);
+            if (file) {
+                formData.append('lampiran', file);
+            }
+
+            // SIMULASI (Karena Backend belum ada)
+            console.log("Data Siap Dikirim ke Admin:", {
+                nama: nama,
+                wa: wa,
+                kategori: kat,
+                file: file ? file.name : "Tidak ada file"
+            });
+
+            // SEMENTARA: Tetap arahkan ke WA sebagai notifikasi
+            // (File tidak bisa ikut ke WA, tapi user Admin tau ada laporan masuk)
+            alert("Laporan berhasil dibuat! Data file sudah siap diproses sistem (Simulasi). Sekarang akan diarahkan ke WA untuk notifikasi cepat.");
+            
+            const nomorAdmin = "6281234567890"; 
+            const textWA = `*NOTIFIKASI LAPORAN BARU*%0A` +
+                           `User: ${nama}%0A` +
+                           `Kategori: ${kat}%0A` +
+                           `Pesan: ${pesan}%0A` +
+                           `(File lampiran tersimpan di Dashboard Admin)`;
+
+            window.open(`https://wa.me/${nomorAdmin}?text=${textWA}`, '_blank');
+            
+            // Reset Form & Tutup
+            document.getElementById('formFloating').reset();
+            togglePengaduan();
+        });
     </script>
 </body>
 </html>

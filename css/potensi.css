@@ -359,6 +359,203 @@ nav {
 }
 
 
+/* PENGADUAN */
+/* =========================================
+   STYLE FLOATING PENGADUAN (POPUP)
+   ========================================= */
+
+/* Area Tombol Mengambang (Pojok Kanan Bawah) */
+.floating-area {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Jarak dari kanan */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999; /* Supaya selalu paling depan */
+}
+
+/* Tombol Pengaduan (Pink/Peach) */
+.pengaduan-btn {
+    background-color: #aac5fb; /* Warna pink sesuai gambar */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.pengaduan-btn:hover { background-color: #79a5ff; }
+
+/* --- KARTU POPUP FORM --- */
+.popup-card {
+    position: fixed;
+    bottom: 90px; /* Muncul di atas tombol */
+    right: 20px;
+    width: 350px; /* Lebar form */
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+    border: 1px solid #f0f0f0;
+    z-index: 9998;
+    
+    /* Efek Muncul (Hidden by Default) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Class Aktif (Dimunculkan JS) */
+.popup-card.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.popup-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.close-popup {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+}
+.close-popup:hover { color: red; }
+
+/* Style Input Kecil */
+.form-group-sm { margin-bottom: 15px; }
+.form-group-sm label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.req { color: red; }
+
+.form-group-sm input, 
+.form-group-sm textarea, 
+.form-group-sm select {
+    width: 100%;
+    background: #f0f2f5; /* Abu muda */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-group-sm input:focus, .form-group-sm textarea:focus {
+    outline: 2px solid #82d655;
+    background: white;
+}
+
+/* Tombol Kirim di Form */
+.btn-submit-popup {
+    width: 100%;
+    background: #82d655; /* Hijau cerah */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-submit-popup:hover { background: #71c348; }
+
+.custom-file-area {
+    display: block;
+    width: 100%;
+    background-color: #f8f9fa;
+    border: 2px dashed #bdc3c7; /* Garis putus-putus */
+    border-radius: 8px;
+    padding: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.custom-file-area:hover {
+    background-color: #e8f6ff; /* Warna berubah saat dihover */
+    border-color: #3498db;
+}
+
+.file-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #7f8c8d;
+}
+
+.file-content i {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.file-content span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    word-break: break-all; /* Agar nama file panjang turun ke bawah */
+}
+
+/* Jika file sudah dipilih (Class ini ditambahkan via JS nanti) */
+.custom-file-area.has-file {
+    background-color: #eaffea;
+    border-color: #2ecc71;
+    border-style: solid;
+}
+
+.custom-file-area.has-file .file-content i {
+    color: #2ecc71; /* Ikon jadi hijau */
+    class: "fa-solid fa-check-circle"; /* Ganti ikon jadi check (opsional logic di js) */
+}
+
+/* Responsif HP */
+@media (max-width: 480px) {
+    .popup-card {
+        width: 85%; /* Lebih lebar di HP */
+        right: 50%;
+        transform: translateX(50%) translateY(20px); /* Center di HP */
+        bottom: 80px;
+    }
+    
+    .popup-card.active {
+        transform: translateX(50%) translateY(0);
+    }
+}
+
+
 /* ======================================================================================== */
 /* FOOTER */
 .footer {
