@@ -346,7 +346,7 @@ nav {
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;

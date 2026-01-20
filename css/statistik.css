@@ -354,7 +354,7 @@ nav {
     gap: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
 .pengaduan-btn:hover {
@@ -473,17 +473,13 @@ nav {
 
 /* ==========================================================================
    RESPONSIVE KHUSUS HALAMAN STATISTIK (HP & TABLET)
-   Paste kode ini di baris paling bawah file CSS Anda
    ========================================================================== */
 
-/* 1. TABLET / LAPTOP KECIL (Max-width: 992px) */
 @media (max-width: 992px) {
-    /* Navbar Toggle */
     .navbar .links { display: none; }
     .navbar .toggle_btn { display: block; }
     .drop_menu { display: block; }
 
-    /* Dashboard Grid jadi 1 Kolom agar tidak sempit */
     .row-charts,
     .row-secondary-charts,
     .row-details {
@@ -491,10 +487,8 @@ nav {
     }
 }
 
-/* 2. HP / MOBILE (Max-width: 768px) */
 @media (max-width: 768px) {
     
-    /* --- NAVBAR --- */
     nav { height: 70px; }
     .navbar { height: 70px; padding: 0 20px; }
     .navbar .logo img { width: 40px; margin-top: 0; }
@@ -508,10 +502,9 @@ nav {
         right: 1rem; 
     }
 
-    /* --- HEADER STATISTIK --- */
     .header {
         height: auto;
-        flex-direction: column; /* Ubah susunan jadi atas-bawah */
+        flex-direction: column; 
         padding: 30px 20px;
         margin-top: 70px;
         text-align: center;
@@ -525,19 +518,17 @@ nav {
     }
 
     .header_content h1 { 
-        font-size: 32px; /* Judul lebih kecil */
+        font-size: 32px; 
     }
 
-    /* FIX PENTING: Hapus margin kanan besar biar teks tidak gepeng */
     .header_content p {
         margin-right: 0 !important; 
         font-size: 16px;
         text-align: center;
     }
 
-    /* --- DASHBOARD CONTENT --- */
     .statistik { 
-        padding: 30px 20px; /* Kurangi padding container */
+        padding: 30px 20px; 
         gap: 30px; 
     }
     
@@ -545,21 +536,18 @@ nav {
         gap: 20px; 
     }
 
-    /* Kartu Ringkasan (Atas) */
     .row-cards { 
-        grid-template-columns: 1fr; /* Jadi 1 kolom ke bawah */
+        grid-template-columns: 1fr; 
     }
     
     .summary-card { 
         padding: 15px; 
     }
 
-    /* Tinggi Grafik di HP */
     .canvas-wrapper { 
         height: 250px; 
     }
 
-    /* --- FOOTER --- */
     .footer-container { 
         grid-template-columns: 1fr; 
         text-align: center; 
@@ -574,9 +562,7 @@ nav {
     }
 }
 
-/* 3. HP KECIL (Max-width: 576px) - KHUSUS POPUP */
 @media (max-width: 576px) {
-    /* Popup Pengaduan Center di HP */
     .popup-card {
         width: 85%;
         right: 50%;

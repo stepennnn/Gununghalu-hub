@@ -353,24 +353,19 @@ nav {
 
 
 /* PENGADUAN */
-/* =========================================
-   STYLE FLOATING PENGADUAN (POPUP)
-   ========================================= */
-
-/* Area Tombol Mengambang (Pojok Kanan Bawah) */
 .floating-area {
     position: fixed;
     bottom: 20px;
-    right: 20px; /* Jarak dari kanan */
+    right: 20px; 
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 9999; /* Supaya selalu paling depan */
+    z-index: 9999; 
 }
 
-/* Tombol Pengaduan (Pink/Peach) */
+/* Tombol Pengaduan */
 .pengaduan-btn {
-    background-color: #aac5fb; /* Warna pink sesuai gambar */
+    background-color: #aac5fb; 
     color: white;
     border: none;
     padding: 12px 25px;
@@ -382,7 +377,7 @@ nav {
     gap: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
 .pengaduan-btn:hover { background-color: #79a5ff; }
@@ -390,9 +385,9 @@ nav {
 /* --- KARTU POPUP FORM --- */
 .popup-card {
     position: fixed;
-    bottom: 90px; /* Muncul di atas tombol */
+    bottom: 90px;
     right: 20px;
-    width: 350px; /* Lebar form */
+    width: 350px; 
     background: white;
     padding: 25px;
     border-radius: 15px;
@@ -400,14 +395,12 @@ nav {
     border: 1px solid #f0f0f0;
     z-index: 9998;
     
-    /* Efek Muncul (Hidden by Default) */
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
     transition: all 0.3s ease-in-out;
 }
 
-/* Class Aktif (Dimunculkan JS) */
 .popup-card.active {
     opacity: 1;
     visibility: visible;
@@ -452,7 +445,7 @@ nav {
 .form-group-sm textarea, 
 .form-group-sm select {
     width: 100%;
-    background: #f0f2f5; /* Abu muda */
+    background: #f0f2f5; 
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -466,163 +459,16 @@ nav {
     background: white;
 }
 
-/* Tombol Kirim di Form */
 .btn-submit-popup {
     width: 100%;
-    background: #82d655; /* Hijau cerah */
+    background: #82d655; 
     color: white;
     border: none;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-submit-popup:hover { background: #71c348; }
-
-.fake-upload {
-    background: #f0f2f5;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.85rem;
-    color: #888;
-    border: 1px dashed #ccc;
-    cursor: not-allowed;
-}
-
-
-
-
-/* PENGADUAN */
-/* =========================================
-   STYLE FLOATING PENGADUAN (POPUP)
-   ========================================= */
-
-/* Area Tombol Mengambang (Pojok Kanan Bawah) */
-.floating-area {
-    position: fixed;
-    bottom: 20px;
-    right: 20px; /* Jarak dari kanan */
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    z-index: 9999; /* Supaya selalu paling depan */
-}
-
-/* Tombol Pengaduan (Pink/Peach) */
-.pengaduan-btn {
-    background-color: #aac5fb; /* Warna pink sesuai gambar */
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.pengaduan-btn:hover { background-color: #79a5ff; }
-
-/* --- KARTU POPUP FORM --- */
-.popup-card {
-    position: fixed;
-    bottom: 90px; /* Muncul di atas tombol */
-    right: 20px;
-    width: 350px; /* Lebar form */
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.15);
-    border: 1px solid #f0f0f0;
-    z-index: 9998;
-    
-    /* Efek Muncul (Hidden by Default) */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease-in-out;
-}
-
-/* Class Aktif (Dimunculkan JS) */
-.popup-card.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.popup-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.close-popup {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #999;
-}
-.close-popup:hover { color: red; }
-
-/* Style Input Kecil */
-.form-group-sm { margin-bottom: 15px; }
-.form-group-sm label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 5px;
-}
-
-.req { color: red; }
-
-.form-group-sm input, 
-.form-group-sm textarea, 
-.form-group-sm select {
-    width: 100%;
-    background: #f0f2f5; /* Abu muda */
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    font-family: inherit;
-    box-sizing: border-box;
-}
-
-.form-group-sm input:focus, .form-group-sm textarea:focus {
-    outline: 2px solid #82d655;
-    background: white;
-}
-
-/* Tombol Kirim di Form */
-.btn-submit-popup {
-    width: 100%;
-    background: #82d655; /* Hijau cerah */
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -635,7 +481,7 @@ nav {
     display: block;
     width: 100%;
     background-color: #f8f9fa;
-    border: 2px dashed #bdc3c7; /* Garis putus-putus */
+    border: 2px dashed #bdc3c7; 
     border-radius: 8px;
     padding: 20px 10px;
     text-align: center;
@@ -645,7 +491,7 @@ nav {
 }
 
 .custom-file-area:hover {
-    background-color: #e8f6ff; /* Warna berubah saat dihover */
+    background-color: #e8f6ff; 
     border-color: #3498db;
 }
 
@@ -665,10 +511,9 @@ nav {
 .file-content span {
     font-size: 0.85rem;
     font-weight: 600;
-    word-break: break-all; /* Agar nama file panjang turun ke bawah */
+    word-break: break-all; 
 }
 
-/* Jika file sudah dipilih (Class ini ditambahkan via JS nanti) */
 .custom-file-area.has-file {
     background-color: #eaffea;
     border-color: #2ecc71;
@@ -676,8 +521,8 @@ nav {
 }
 
 .custom-file-area.has-file .file-content i {
-    color: #2ecc71; /* Ikon jadi hijau */
-    class: "fa-solid fa-check-circle"; /* Ganti ikon jadi check (opsional logic di js) */
+    color: #2ecc71; 
+    class: "fa-solid fa-check-circle"; 
 }
 
 
@@ -786,17 +631,70 @@ nav {
 @media (max-width: 768px) {
     
     /* --- NAVBAR --- */
-    nav { height: 70px; }
-    .navbar { height: 70px; padding: 0 20px; }
-    .navbar .logo img { width: 40px; margin-top: 0; }
-    .navbar .logo .title h1 { font-size: 1.1rem; margin-bottom: 2px; }
-    .navbar .logo .title p { font-size: 10px; }
+    nav { 
+        height: 70px; 
+    
+    }
+    .navbar { 
+        height: 70px; 
+        padding: 0 20px; 
+    }
+    .navbar .logo img { 
+        width: 40px; 
+        margin-top: 0; 
+    }
+    .navbar .logo .title h1 { 
+        font-size: 1.1rem; 
+        margin-bottom: 2px; 
+    }
+    .navbar .logo .title p { 
+        font-size: 10px; 
+    }
 
     .drop_menu { 
         top: 70px; 
         width: auto; 
         left: 1rem; 
         right: 1rem; 
+    }
+
+    /* JELAJAH */
+
+    .jelajah {
+        flex-direction: column; 
+        padding: 30px 20px; 
+    }
+
+    .cards-container {
+        justify-content: center; 
+        gap: 20px; 
+    }
+
+    .card {
+        width: 100%; 
+        max-width: 180px;
+        height: auto;
+        gap: 15px;
+    }
+
+    .card p {
+        display: none;
+    }
+
+    .berita-terkini {
+        padding: 40px 20px;
+    }
+
+    .berita-container {
+        justify-content: center; 
+        gap: 20px; 
+    }
+
+    .read-more {
+        width: 100%; 
+        max-width: 180px;
+        height: auto;
+        gap: 15px;
     }
 
     /* --- KONTEN DETAIL BERITA --- */
