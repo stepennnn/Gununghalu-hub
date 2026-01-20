@@ -465,6 +465,11 @@ nav {
     border-top: 1px solid #444;
 }
 
+.footer-bottom a {
+    color: #ffffff8c;
+    text-decoration: underline;
+    font-size: 14px;
+}
 
 /* ==========================================================================
    RESPONSIVE KHUSUS HALAMAN STATISTIK (HP & TABLET)

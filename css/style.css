@@ -774,10 +774,8 @@ nav {
 
 /* ==========================================================================
    KODE RESPONSIVE FINAL KHUSUS DETAIL BERITA (HP & TABLET)
-   Paste kode ini di baris paling bawah file CSS Anda
    ========================================================================== */
 
-/* 1. TABLET / LAPTOP KECIL (Max-width: 992px) */
 @media (max-width: 992px) {
     /* Navbar Toggle */
     .navbar .links { display: none; }
@@ -785,7 +783,6 @@ nav {
     .drop_menu { display: block; }
 }
 
-/* 2. HP / MOBILE (Max-width: 768px) */
 @media (max-width: 768px) {
     
     /* --- NAVBAR --- */
@@ -804,8 +801,8 @@ nav {
 
     /* --- KONTEN DETAIL BERITA --- */
     .detail-container {
-        padding: 30px 20px; /* Padding sisi mengecil */
-        margin-top: 70px;   /* Sesuaikan dengan tinggi navbar baru (sebelumnya 90px) */
+        padding: 30px 20px; 
+        margin-top: 70px;  
     }
 
     .news-header {
@@ -813,30 +810,30 @@ nav {
     }
 
     .news-title {
-        font-size: 1.6rem; /* Judul lebih kecil agar muat */
+        font-size: 1.6rem; 
         line-height: 1.3;
     }
 
     .news-meta {
-        flex-direction: column; /* Info tanggal & admin ditumpuk */
+        flex-direction: column; 
         align-items: flex-start;
         gap: 10px;
         font-size: 0.85rem;
     }
 
     .news-featured-image {
-        height: 200px; /* Tinggi gambar dikecilkan proporsional */
+        height: 200px; 
         margin-bottom: 25px;
     }
 
     .news-content {
-        font-size: 1rem; /* Ukuran font isi berita */
-        text-align: left; /* Rata kiri lebih rapi daripada justify di layar kecil */
+        font-size: 1rem;
+        text-align: left; 
     }
 
     /* --- FOOTER --- */
     .footer-container {
-        grid-template-columns: 1fr; /* Footer jadi 1 kolom */
+        grid-template-columns: 1fr; 
         text-align: center;
         gap: 30px;
     }
@@ -851,7 +848,6 @@ nav {
     }
 }
 
-/* 3. HP KECIL (Max-width: 576px) - KHUSUS POPUP */
 @media (max-width: 576px) {
     /* Popup Pengaduan Center */
     .popup-card {
