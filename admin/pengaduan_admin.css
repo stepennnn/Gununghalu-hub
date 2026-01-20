@@ -1,0 +1,129 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+body { background-color: #f4f6f9; color: #333; display: flex; min-height: 100vh; }
+
+/* --- SIDEBAR --- */
+.sidebar { width: 260px; background-color: #091f4c; color: white; position: fixed; height: 100%; z-index: 1000; display: flex; flex-direction: column; }
+.sidebar-header { padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+.sidebar-menu { padding: 20px 0; list-style: none; flex-grow: 1; display: flex; flex-direction: column; overflow-y: auto; }
+.sidebar-menu li:last-child { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); }
+.sidebar-menu a { display: flex; align-items: center; padding: 15px 25px; color: #b8c7ce; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
+.sidebar-menu a:hover, .sidebar-menu a.active { background-color: #1a2f5a; color: white; border-left-color: #aac5fb; }
+.sidebar-menu i { margin-right: 15px; width: 20px; text-align: center; }
+
+/* --- CONTENT --- */
+.main-content { flex: 1; margin-left: 260px; padding: 30px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.header h1 { color: #091f4c; font-size: 1.8rem; }
+
+.content-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+/* --- TABLE STYLE --- */
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; vertical-align: middle; }
+th { background: #f8f9fa; font-weight: 700; color: #555; }
+
+/* Badges */
+.badge { padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; display: inline-block; }
+
+/* Warna Kategori */
+.badge-admin { background: #e3f2fd; color: #1565c0; } /* Biru */
+.badge-infra { background: #fff3e0; color: #e65100; } /* Orange */
+.badge-aman  { background: #e8f5e9; color: #2e7d32; } /* Hijau */
+.badge-lain  { background: #f3e5f5; color: #7b1fa2; } /* Ungu */
+
+/* Warna Status */
+.status-baru { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+.status-proses { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+.status-selesai { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+
+/* Tombol Aksi */
+.btn-wa { 
+    background-color: #25D366; color: white; padding: 8px 12px; 
+    border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem;
+    display: inline-flex; align-items: center; gap: 5px; border: none; cursor: pointer;
+}
+.btn-wa:hover { background-color: #128c7e; }
+
+.btn-view { background: #3498db; color: white; padding: 8px; border-radius: 6px; border: none; cursor: pointer; }
+.btn-check { background: #f1c40f; color: white; padding: 8px; border-radius: 6px; border: none; cursor: pointer; }
+
+/* File Link */
+.file-link { color: #3498db; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+.file-link:hover { text-decoration: underline; }
+
+
+/* --- COPY PASTE KODE INI DI BAGIAN PALING BAWAH CSS --- */
+        
+        /* Responsive Sidebar (Mode HP/Tablet) */
+        @media (max-width: 768px) {
+            
+            /* 1. Kecilkan Lebar Sidebar */
+            .sidebar {
+                width: 70px;
+            }
+
+            /* 2. Sesuaikan Konten Utama agar tidak tertutup */
+            .main-content {
+                margin-left: 70px;
+                padding: 15px; /* Kurangi padding biar lebih luas */
+            }
+
+            /* 3. Sembunyikan Tulisan "Admin Panel" di Header Sidebar */
+            .sidebar-header h3 {
+                display: none;
+            }
+            
+            /* Tengahkan Logo */
+            .sidebar-header {
+                justify-content: center;
+                padding: 20px 0;
+            }
+
+            /* 4. Sembunyikan Teks Menu (Sisakan Ikon) */
+            .sidebar-menu a {
+                font-size: 0; /* Ini trik menyembunyikan teks tanpa hapus HTML */
+                justify-content: center; /* Ikon jadi di tengah */
+                padding: 15px 10px;
+            }
+
+            /* 5. Kembalikan Ukuran Ikon (Karena kena efek font-size 0) */
+            .sidebar-menu i {
+                font-size: 1.4rem; 
+                margin-right: 0; /* Hapus jarak ikon ke teks */
+            }
+
+            /* 6. Penyesuaian Header Judul Halaman */
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            /* --- 4. TABEL AGAR BISA DIGESER (SCROLL) --- */
+            .content-box {
+                padding: 15px; /* Kurangi padding box putih */
+            }
+            table {
+                display: block;
+                width: 100%;
+                overflow-x: auto; /* Tabel bisa digeser ke samping */
+                white-space: nowrap; /* Teks tabel tidak turun baris */
+            }
+
+            /* --- 5. MODAL / POPUP DI TENGAH LAYAR --- */
+            .modal-content {
+                width: 90%;      /* Lebar modal 90% layar */
+                margin: auto;    /* Posisi tengah */
+                max-height: 90vh;
+                overflow-y: auto; /* Bisa discroll jika form panjang */
+            }
+
+            /* --- 6. FORM PROFIL (Dua Kolom jadi Satu) --- */
+            .profil-grid, .cards-grid {
+                grid-template-columns: 1fr; /* Paksa jadi 1 kolom ke bawah */
+            }
+        }

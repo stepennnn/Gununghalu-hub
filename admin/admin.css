@@ -1,0 +1,205 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    background-color: #f4f6f9; 
+    color: #333; 
+    display: flex; 
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background-color: #091f4c;
+    color: white;
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+    /* Tambahan Flexbox untuk layout vertikal */
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0; /* Header tidak boleh mengecil */
+}
+.sidebar-header img {
+    width: 40px;
+}
+.sidebar-menu {
+    padding: 20px 0;
+    list-style: none;
+    /* Membuat menu mengisi sisa ruang kosong */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Agar menu bisa discroll jika terlalu panjang */
+}
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: #b8c7ce;
+    text-decoration: none;
+    transition: 0.3s;
+    border-left: 4px solid transparent;
+}
+.sidebar-menu a:hover, .sidebar-menu a.active {
+    background-color: #1a2f5a; 
+    color: white; 
+    border-left-color: #aac5fb; 
+}
+.sidebar-menu i { 
+    margin-right: 15px; 
+    width: 20px; 
+    text-align: center; 
+}
+.sidebar-menu li:last-child {
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.1); /* Opsional: Garis pemisah */
+}
+
+/* CONTENT */
+.main-content { 
+    flex: 1; 
+    margin-left: 260px; 
+    padding: 30px; 
+}
+.header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+.header h1 { 
+    color: #091f4c; 
+    font-size: 1.8rem; 
+}
+.user-info { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+.user-info img { 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+}
+
+/* DASHBOARD CARDS */
+.cards-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 30px; 
+}
+.card { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+}
+.card-icon { 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 12px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 1.5rem; 
+    color: white; 
+}
+.bg-blue { 
+    background: linear-gradient(135deg, #3498db, #2980b9); 
+}
+.bg-green { 
+    background: linear-gradient(135deg, #2ecc71, #27ae60); 
+}
+.bg-orange { 
+    background: linear-gradient(135deg, #f1c40f, #d35400); 
+}
+.bg-red { 
+    background: linear-gradient(135deg, #e74c3c, #c0392b); 
+}
+.bg-purple { 
+    background: linear-gradient(135deg, #9b59b6, #8e44ad); 
+}
+
+/* TABLE */
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    background: white; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+th, td { 
+    padding: 15px; 
+    text-align: left; 
+    border-bottom: 1px solid #eee; 
+}
+th { 
+    background-color: #f8f9fa; 
+}
+
+
+/* responsive */        
+/* Responsive Sidebar (Mode HP/Tablet) */
+@media (max-width: 768px) {
+    
+    /* 1. Kecilkan Lebar Sidebar */
+    .sidebar {
+        width: 70px;
+    }
+    /* 2. Sesuaikan Konten Utama agar tidak tertutup */
+    .main-content {
+        margin-left: 70px;
+        padding: 15px; /* Kurangi padding biar lebih luas */
+    }
+    /* 3. Sembunyikan Tulisan "Admin Panel" di Header Sidebar */
+    .sidebar-header h3 {
+        display: none;
+    }
+    
+    /* Tengahkan Logo */
+    .sidebar-header {
+        justify-content: center;
+        padding: 20px 0;
+    }
+    /* 4. Sembunyikan Teks Menu (Sisakan Ikon) */
+    .sidebar-menu a {
+        font-size: 0; /* Ini trik menyembunyikan teks tanpa hapus HTML */
+        justify-content: center; /* Ikon jadi di tengah */
+        padding: 15px 10px;
+    }
+    /* 5. Kembalikan Ukuran Ikon (Karena kena efek font-size 0) */
+    .sidebar-menu i {
+        font-size: 1.4rem; 
+        margin-right: 0; /* Hapus jarak ikon ke teks */
+    }
+    /* 6. Penyesuaian Header Judul Halaman */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .user-info span {
+        display: none; /* Sembunyikan nama user di HP, sisakan foto */
+    }
+}
