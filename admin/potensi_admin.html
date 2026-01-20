@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Potensi - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS SAMA SEPERTI DI ATAS */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        body { background-color: #f4f6f9; color: #333; display: flex; min-height: 100vh; }
+        .sidebar { width: 260px; background-color: #091f4c; color: white; position: fixed; height: 100%; z-index: 1000; display: flex; flex-direction: column; }
+        .sidebar-header { padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+        .sidebar-menu { padding: 20px 0; list-style: none; flex-grow: 1; display: flex; flex-direction: column; overflow-y: auto; }
+        .sidebar-menu li:last-child { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-menu a { display: flex; align-items: center; padding: 15px 25px; color: #b8c7ce; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background-color: #1a2f5a; color: white; border-left-color: #aac5fb; }
+        .sidebar-menu i { margin-right: 15px; width: 20px; text-align: center; }
+        
+        .main-content { flex: 1; margin-left: 260px; padding: 30px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .content-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; vertical-align: middle; }
+        th { background: #f8f9fa; font-weight: 700; }
+        .img-thumb { width: 60px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
+        
+        .btn-add { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .action-btn { padding: 6px 10px; border-radius: 4px; border: none; cursor: pointer; color: white; margin-right: 5px; }
+        .btn-edit { background: #f39c12; }
+        .btn-delete { background: #e74c3c; }
+        
+        /* Modal & Form */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background-color: white; padding: 30px; border-radius: 12px; width: 500px; max-width: 90%; position: relative; animation: slideDown 0.3s; }
+        @keyframes slideDown { from {transform: translateY(-20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .close-btn { position: absolute; right: 20px; top: 20px; font-size: 1.5rem; cursor: pointer; color: #888; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
+        .btn-save { width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header"><img src="../foto/logo_desa.png" width="40" onerror="this.src='https://placehold.co/40'"> <h3>Admin Panel</h3></div>
+        <ul class="sidebar-menu">
+            <li><a href="../admin/admin.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+            <li><a href="../admin/profil_admin.html"><i class="fa-solid fa-landmark"></i> Manajemen Profil</a></li>
+            <li><a href="../admin/potensi_admin.html" class="active"><i class="fa-solid fa-mountain-sun"></i> Manajemen Potensi</a></li>
+            <li><a href="../admin/berita_admin.html"><i class="fa-regular fa-newspaper"></i> Manajemen Berita</a></li>
+            <li><a href="../admin/umkm_admin.html"><i class="fa-solid fa-store"></i> Manajemen UMKM</a></li>
+            <li><a href="../admin/pengaduan_admin.html"><i class="fa-solid fa-headset"></i> Pengaduan Masuk</a></li>
+            <li><a href="../html/index.html" onclick="return confirm('Keluar ke halaman utama website?')"><i class="fa-solid fa-right-from-bracket"></i> Logout / Ke Web</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1 style="color:#091f4c">Manajemen Potensi Desa</h1>
+            <button class="btn-add" onclick="toggleModal(true)"><i class="fa-solid fa-plus"></i> Tambah Potensi</button>
+        </header>
+
+        <div class="content-box">
+            <table>
+                <thead>
+                    <tr><th>No</th><th>Gambar</th><th>Nama Potensi</th><th>Kategori</th><th>Deskripsi Singkat</th><th>Aksi</th></tr>
+                </thead>
+                <tbody id="tablePotensi">
+                    <tr>
+                        <td>1</td>
+                        <td><img src="../foto/potensi/kopi.jpg" class="img-thumb" onerror="this.src='https://placehold.co/60x40'"></td>
+                        <td>Kopi Gununghalu</td>
+                        <td><span class="badge" style="background:#fff3e0; color:#e65100;">Pertanian</span></td>
+                        <td>Kopi Arabika/Robusta kualitas ekspor.</td>
+                        <td>
+                            <button class="action-btn btn-edit"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-btn btn-delete" onclick="hapusBaris(this)"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="modalPotensi" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleModal(false)">&times;</span>
+            <h3 style="margin-bottom:20px;">Tambah Potensi Baru</h3>
+            <form onsubmit="tambahPotensi(event)">
+                <div class="form-group">
+                    <label>Nama Potensi</label>
+                    <input type="text" id="nama" required>
+                </div>
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <select id="kategori" required>
+                        <option value="Pertanian">Pertanian</option>
+                        <option value="Pariwisata">Pariwisata</option>
+                        <option value="Energi">Energi</option>
+                        <option value="Sejarah">Sejarah</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi Singkat</label>
+                    <textarea id="deskripsi" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Foto Potensi</label>
+                    <input type="file" id="foto" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn-save">Simpan Data</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal(show) { document.getElementById('modalPotensi').classList.toggle('active', show); }
+
+        function tambahPotensi(e) {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const kat = document.getElementById('kategori').value;
+            const desk = document.getElementById('deskripsi').value;
+            const file = document.getElementById('foto').files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const tbody = document.getElementById('tablePotensi');
+                    const no = tbody.children.length + 1;
+                    
+                    let badgeColor = '#eee';
+                    if(kat === 'Pertanian') badgeColor = '#fff3e0; color:#e65100;';
+                    if(kat === 'Pariwisata') badgeColor = '#e0f2f1; color:#00695c;';
+                    if(kat === 'Energi') badgeColor = '#e3f2fd; color:#1565c0;';
+
+                    const row = `<tr>
+                        <td>${no}</td>
+                        <td><img src="${e.target.result}" class="img-thumb"></td>
+                        <td>${nama}</td>
+                        <td><span class="badge" style="background:${badgeColor}">${kat}</span></td>
+                        <td>${desk}</td>
+                        <td>
+                            <button class="action-btn btn-edit"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-btn btn-delete" onclick="hapusBaris(this)"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>`;
+                    tbody.insertAdjacentHTML('beforeend', row);
+                    toggleModal(false);
+                    alert('Data Potensi berhasil ditambahkan!');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        function hapusBaris(btn) { if(confirm('Hapus?')) btn.closest('tr').remove(); }
+    </script>
+</body>
+</html>

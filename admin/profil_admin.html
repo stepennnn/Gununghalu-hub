@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Profil - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS GLOBAL --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        body { background-color: #f4f6f9; color: #333; display: flex; min-height: 100vh; }
+
+        /* --- SIDEBAR (Logout Paling Bawah) --- */
+        .sidebar {
+            width: 260px; background-color: #091f4c; color: white; position: fixed; height: 100%; z-index: 1000;
+            display: flex; flex-direction: column;
+        }
+        .sidebar-header {
+            padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;
+        }
+        .sidebar-menu {
+            padding: 20px 0; list-style: none; flex-grow: 1; display: flex; flex-direction: column; overflow-y: auto;
+        }
+        .sidebar-menu li:last-child { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-menu a {
+            display: flex; align-items: center; padding: 15px 25px; color: #b8c7ce; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: #1a2f5a; color: white; border-left-color: #aac5fb;
+        }
+        .sidebar-menu i { margin-right: 15px; width: 20px; text-align: center; }
+
+        /* --- CONTENT --- */
+        .main-content { flex: 1; margin-left: 260px; padding: 30px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .header h1 { color: #091f4c; font-size: 1.8rem; }
+        
+        .content-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        
+        /* --- FORM ELEMENTS --- */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
+        .form-group textarea, .form-group input, .form-group select { 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; resize: vertical;
+        }
+        
+        /* Tombol Save & Add */
+        .btn-save { background: #3498db; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        .btn-save:hover { background: #2980b9; }
+
+        .btn-add { background: #27ae60; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-add:hover { background: #219150; }
+
+        /* --- TABLE --- */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; vertical-align: middle; }
+        th { background: #f8f9fa; font-weight: 700; color: #555; }
+        
+        .profile-pic { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+        .action-btn { padding: 6px 10px; border-radius: 4px; border: none; cursor: pointer; color: white; margin-right: 5px; }
+        .btn-edit { background: #f39c12; }
+        .btn-delete { background: #e74c3c; }
+
+        /* --- MODAL (POPUP) STYLE --- */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background-color: white; padding: 30px; border-radius: 12px; width: 400px; max-width: 90%; position: relative; animation: slideDown 0.3s;
+        }
+        @keyframes slideDown { from {transform: translateY(-20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        
+        .close-btn { position: absolute; right: 20px; top: 20px; font-size: 1.5rem; cursor: pointer; color: #888; }
+        .close-btn:hover { color: #333; }
+        
+        .modal-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; color: #091f4c; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../foto/logo_desa.png" width="40" onerror="this.src='https://placehold.co/40'"> <h3>Admin Panel</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="../admin/admin.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+            <li><a href="../admin/profil_admin.html" class="active"><i class="fa-solid fa-landmark"></i> Manajemen Profil</a></li>
+            <li><a href="../admin/potensi_admin.html"><i class="fa-solid fa-mountain-sun"></i> Manajemen Potensi</a></li>
+            <li><a href="../admin/berita_admin.html"><i class="fa-regular fa-newspaper"></i> Manajemen Berita</a></li>
+            <li><a href="../admin/umkm_admin.html"><i class="fa-solid fa-store"></i> Manajemen UMKM</a></li>
+            <li><a href="../admin/pengaduan_admin.html"><i class="fa-solid fa-headset"></i> Pengaduan Masuk</a></li>
+            <li><a href="../html/index.html" onclick="return confirm('Keluar ke halaman utama website?')"><i class="fa-solid fa-right-from-bracket"></i> Logout / Ke Web</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div class="header">
+            <h1>Manajemen Profil Desa</h1>
+        </div>
+
+        <div class="content-box">
+            <h3><i class="fa-solid fa-pen-to-square"></i> Edit Identitas Desa</h3>
+            <br>
+            <div class="form-group">
+                <label>Sejarah Desa</label>
+                <textarea rows="4">Secara administratif, Desa Gununghalu merupakan salah satu desa tertua...</textarea>
+            </div>
+            <div class="form-group">
+                <label>Visi</label>
+                <textarea rows="2">Terwujudnya Desa Gununghalu yang Mandiri, Maju, dan Agamis.</textarea>
+            </div>
+            <div class="form-group">
+                <label>Misi</label>
+                <textarea rows="4">1. Meningkatkan kualitas pelayanan publik.&#10;2. Membangun infrastruktur yang merata.</textarea>
+            </div>
+            <button class="btn-save" onclick="alert('Identitas berhasil disimpan!')"><i class="fa-solid fa-save"></i> Simpan Perubahan</button>
+        </div>
+
+        <div class="content-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h3><i class="fa-solid fa-users"></i> Struktur Organisasi</h3>
+                <button class="btn-add" onclick="toggleModal(true)"><i class="fa-solid fa-plus"></i> Tambah Anggota</button>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Nama Lengkap</th>
+                        <th>Jabatan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tableStruktur">
+                    <tr>
+                        <td><img src="https://placehold.co/40" class="profile-pic"></td>
+                        <td>Bapak Kepala Desa</td>
+                        <td>Kepala Desa</td>
+                        <td>
+                            <button class="action-btn btn-edit"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-btn btn-delete" onclick="hapusBaris(this)"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://placehold.co/40" class="profile-pic"></td>
+                        <td>Ibu Sekretaris</td>
+                        <td>Sekretaris Desa</td>
+                        <td>
+                            <button class="action-btn btn-edit"><i class="fa-solid fa-pen"></i></button>
+                            <button class="action-btn btn-delete" onclick="hapusBaris(this)"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="modalTambah" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleModal(false)">&times;</span>
+            <div class="modal-title">Tambah Pengurus Baru</div>
+            
+            <form id="formTambah" onsubmit="tambahAnggota(event)">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="inputNama" placeholder="Contoh: Budi Santoso" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Jabatan</label>
+                    <input type="text" id="inputJabatan" placeholder="Contoh: Kasi Pemerintahan" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Foto Profil</label>
+                    <input type="file" id="inputFoto" accept="image/*" required>
+                    <small style="color:#888">Format: JPG/PNG, Maks 2MB</small>
+                </div>
+
+                <button type="submit" class="btn-save" style="width:100%">Simpan Data</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 1. Toggle Modal (Buka/Tutup)
+        function toggleModal(show) {
+            const modal = document.getElementById('modalTambah');
+            if(show) {
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+                document.getElementById('formTambah').reset(); // Reset form saat tutup
+            }
+        }
+
+        // 2. Logic Tambah Anggota dengan Preview Foto
+        function tambahAnggota(e) {
+            e.preventDefault(); // Mencegah reload halaman
+
+            // Ambil Data dari Input
+            const nama = document.getElementById('inputNama').value;
+            const jabatan = document.getElementById('inputJabatan').value;
+            const fileInput = document.getElementById('inputFoto');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                
+                // Ketika file selesai dibaca, jalankan ini:
+                reader.onload = function(e) {
+                    const imgSrc = e.target.result; // Data gambar base64
+                    
+                    // Buat Baris Baru di Tabel
+                    const tbody = document.getElementById('tableStruktur');
+                    const newRow = `
+                        <tr>
+                            <td><img src="${imgSrc}" class="profile-pic"></td>
+                            <td>${nama}</td>
+                            <td>${jabatan}</td>
+                            <td>
+                                <button class="action-btn btn-edit" onclick="alert('Fitur Edit (Simulasi)')"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn btn-delete" onclick="hapusBaris(this)"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                    
+                    // Masukkan ke tabel (paling bawah)
+                    tbody.insertAdjacentHTML('beforeend', newRow);
+                    
+                    // Tutup Modal & Beri Notifikasi
+                    toggleModal(false);
+                    alert('Anggota baru berhasil ditambahkan!');
+                }
+
+                // Mulai baca file gambar
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // 3. Logic Hapus Baris
+        function hapusBaris(btn) {
+            if(confirm('Yakin ingin menghapus anggota ini?')) {
+                const row = btn.closest('tr');
+                row.remove();
+            }
+        }
+    </script>
+</body>
+</html>

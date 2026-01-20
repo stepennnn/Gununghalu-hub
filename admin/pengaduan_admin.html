@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaduan Masuk - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS GLOBAL --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        body { background-color: #f4f6f9; color: #333; display: flex; min-height: 100vh; }
+
+        /* --- SIDEBAR --- */
+        .sidebar { width: 260px; background-color: #091f4c; color: white; position: fixed; height: 100%; z-index: 1000; display: flex; flex-direction: column; }
+        .sidebar-header { padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+        .sidebar-menu { padding: 20px 0; list-style: none; flex-grow: 1; display: flex; flex-direction: column; overflow-y: auto; }
+        .sidebar-menu li:last-child { margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-menu a { display: flex; align-items: center; padding: 15px 25px; color: #b8c7ce; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background-color: #1a2f5a; color: white; border-left-color: #aac5fb; }
+        .sidebar-menu i { margin-right: 15px; width: 20px; text-align: center; }
+
+        /* --- CONTENT --- */
+        .main-content { flex: 1; margin-left: 260px; padding: 30px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .header h1 { color: #091f4c; font-size: 1.8rem; }
+        
+        .content-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        /* --- TABLE STYLE --- */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; vertical-align: middle; }
+        th { background: #f8f9fa; font-weight: 700; color: #555; }
+        
+        /* Badges */
+        .badge { padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; display: inline-block; }
+        
+        /* Warna Kategori */
+        .badge-admin { background: #e3f2fd; color: #1565c0; } /* Biru */
+        .badge-infra { background: #fff3e0; color: #e65100; } /* Orange */
+        .badge-aman  { background: #e8f5e9; color: #2e7d32; } /* Hijau */
+        .badge-lain  { background: #f3e5f5; color: #7b1fa2; } /* Ungu */
+
+        /* Warna Status */
+        .status-baru { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+        .status-proses { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+        .status-selesai { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+
+        /* Tombol Aksi */
+        .btn-wa { 
+            background-color: #25D366; color: white; padding: 8px 12px; 
+            border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem;
+            display: inline-flex; align-items: center; gap: 5px; border: none; cursor: pointer;
+        }
+        .btn-wa:hover { background-color: #128c7e; }
+
+        .btn-view { background: #3498db; color: white; padding: 8px; border-radius: 6px; border: none; cursor: pointer; }
+        .btn-check { background: #f1c40f; color: white; padding: 8px; border-radius: 6px; border: none; cursor: pointer; }
+
+        /* File Link */
+        .file-link { color: #3498db; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+        .file-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header"><img src="../foto/logo_desa.png" width="40" onerror="this.src='https://placehold.co/40'"> <h3>Admin Panel</h3></div>
+        <ul class="sidebar-menu">
+            <li><a href="../admin/admin.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+            <li><a href="../admin/profil_admin.html"><i class="fa-solid fa-landmark"></i> Manajemen Profil</a></li>
+            <li><a href="../admin/potensi_admin.html"><i class="fa-solid fa-mountain-sun"></i> Manajemen Potensi</a></li>
+            <li><a href="../admin/berita_admin.html"><i class="fa-regular fa-newspaper"></i> Manajemen Berita</a></li>
+            <li><a href="../admin/umkm_admin.html"><i class="fa-solid fa-store"></i> Manajemen UMKM</a></li>
+            <li><a href="../admin/pengaduan_admin.html" class="active"><i class="fa-solid fa-headset"></i> Pengaduan Masuk</a></li>
+            <li><a href="../html/index.html" onclick="return confirm('Keluar ke halaman utama website?')"><i class="fa-solid fa-right-from-bracket"></i> Logout / Ke Web</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1 style="color:#091f4c">Laporan Pengaduan Warga</h1>
+            <button onclick="window.print()" style="padding:10px 20px; background:#3498db; color:white; border:none; border-radius:6px; cursor:pointer"><i class="fa-solid fa-print"></i> Cetak Laporan</button>
+        </header>
+
+        <div class="content-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 15%;">Nama Warga</th>
+                        <th style="width: 12%;">Kategori</th>
+                        <th style="width: 30%;">Isi Pengaduan</th>
+                        <th style="width: 10%;">Bukti</th>
+                        <th style="width: 10%;">Status</th>
+                        <th style="width: 18%;">Aksi (Hubungi)</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        // --- 1. DATA DUMMY (Mencerminkan hasil input form warga) ---
+        const pengaduanData = [
+            { 
+                id: 1, 
+                nama: "Budi Santoso", 
+                wa: "081234567890", // Format 08
+                kategori: "Infrastruktur", 
+                pesan: "Jalan di RW 05 rusak parah berlubang, mohon segera diperbaiki karena bahaya.", 
+                file: "foto_jalan.jpg", 
+                status: "Baru" 
+            },
+            { 
+                id: 2, 
+                nama: "Siti Aminah", 
+                wa: "085678912345", 
+                kategori: "Administrasi", 
+                pesan: "Mohon info syarat pembuatan KK baru bagi pengantin baru.", 
+                file: "syarat.pdf", 
+                status: "Proses" 
+            },
+            { 
+                id: 3, 
+                nama: "Ujang Komarudin", 
+                wa: "089876543210", 
+                kategori: "Keamanan", 
+                pesan: "Pos ronda di RT 02 lampunya mati, mohon bantuan bohlam.", 
+                file: "", // Tidak ada file
+                status: "Selesai" 
+            }
+        ];
+
+        // --- 2. RENDER TABEL ---
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = ''; // Reset isi tabel
+
+            pengaduanData.forEach((item, index) => {
+                
+                // Logic Badge Kategori
+                let katClass = 'badge-lain';
+                if(item.kategori === 'Administrasi') katClass = 'badge-admin';
+                if(item.kategori === 'Infrastruktur') katClass = 'badge-infra';
+                if(item.kategori === 'Keamanan') katClass = 'badge-aman';
+
+                // Logic Badge Status
+                let statClass = 'status-baru';
+                if(item.status === 'Proses') statClass = 'status-proses';
+                if(item.status === 'Selesai') statClass = 'status-selesai';
+
+                // Logic File Bukti
+                let fileDisplay = item.file ? 
+                    `<a href="#" onclick="alert('Membuka file: ${item.file}')" class="file-link"><i class="fa-solid fa-paperclip"></i> Lihat</a>` : 
+                    `<span style="color:#ccc; font-size:0.8rem;">-</span>`;
+
+                // --- LOGIC WHATSAPP GENERATOR ---
+                // Ubah 08xx jadi 628xx
+                let nomorWA = item.wa;
+                if (nomorWA.startsWith('0')) {
+                    nomorWA = '62' + nomorWA.slice(1);
+                }
+
+                // Template Pesan Balasan Admin
+                const pesanBalasan = `Halo Sdr/i ${item.nama}, saya Admin Desa Gununghalu. Terkait laporan Anda mengenai *${item.kategori}* dengan isi: "${item.pesan.substring(0, 30)}...", kami informasikan bahwa...`;
+                
+                const linkWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanBalasan)}`;
+
+                // Render Baris HTML
+                const row = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>
+                            <strong>${item.nama}</strong><br>
+                            <small style="color:#777">${item.wa}</small>
+                        </td>
+                        <td><span class="badge ${katClass}">${item.kategori}</span></td>
+                        <td>${item.pesan}</td>
+                        <td>${fileDisplay}</td>
+                        <td><span class="badge ${statClass}">${item.status}</span></td>
+                        <td>
+                            <a href="${linkWA}" target="_blank" class="btn-wa" title="Balas via WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i> Hubungi
+                            </a>
+                            <button class="btn-check" onclick="ubahStatus(${item.id})" title="Ubah Status"><i class="fa-solid fa-rotate"></i></button>
+                        </td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        // Fitur Ubah Status (Simulasi)
+        function ubahStatus(id) {
+            alert(`Status pengaduan ID ${id} berhasil diperbarui (Simulasi).`);
+        }
+
+        // Jalankan saat load
+        document.addEventListener('DOMContentLoaded', renderTable);
+
+    </script>
+</body>
+</html>
