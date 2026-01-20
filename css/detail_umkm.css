@@ -514,22 +514,16 @@ nav {
 }
 
 /* ==========================================================================
-   KODE RESPONSIVE FINAL (HP & TABLET)
-   Paste kode ini di baris paling bawah file CSS Anda
-   ========================================================================== */
+   KODE RESPONSIVE */
 
-/* 1. TABLET / LAPTOP KECIL (Max-width: 992px) */
 @media (max-width: 992px) {
-    /* Navbar: Sembunyikan menu desktop, munculkan tombol hamburger */
     .navbar .links { display: none; }
     .navbar .toggle_btn { display: block; }
     .drop_menu { display: block; }
 }
 
-/* 2. HP / MOBILE (Max-width: 768px) */
 @media (max-width: 768px) {
     
-    /* --- NAVBAR --- */
     nav { height: 70px; }
     .navbar { height: 70px; padding: 0 20px; }
     .navbar .logo img { width: 40px; margin-top: 0; }
@@ -543,10 +537,9 @@ nav {
         right: 1rem; 
     }
 
-    /* --- HEADER (JUDUL HALAMAN) --- */
     .header {
         height: auto;
-        flex-direction: column; /* Gambar atas, Teks bawah */
+        flex-direction: column; 
         padding: 30px 20px;
         margin-top: 70px;
         text-align: center;
@@ -560,38 +553,30 @@ nav {
     }
 
     .header_content h1 {
-        font-size: 32px; /* Font judul diperkecil */
+        font-size: 32px;
     }
 
-    /* FIX PENTING: Hapus margin kanan 35rem biar teks tidak gepeng */
+    
     .header_content p {
         margin-right: 0 !important; 
         font-size: 16px;
         text-align: center;
     }
 
-    /* --- DASHBOARD / STATISTIK (Jika ada di halaman ini) --- */
-    .statistik { padding: 30px 20px; gap: 30px; }
-    .dashboard-full { gap: 20px; }
-    .row-cards, .row-charts, .row-secondary-charts, .row-details { 
-        grid-template-columns: 1fr; 
-    }
-    .canvas-wrapper { height: 250px; }
-
     /* --- DETAIL PRODUK / UMKM --- */
     .product-detail-container {
         padding: 30px 20px;
-        margin-top: 70px; /* Sesuaikan tinggi navbar */
+        margin-top: 70px;
     }
 
     .product-wrapper {
-        grid-template-columns: 1fr; /* Jadi 1 kolom (Gambar atas, Info bawah) */
+        grid-template-columns: 1fr; 
         gap: 30px;
     }
 
     /* --- FOOTER --- */
     .footer-container {
-        grid-template-columns: 1fr; /* Jadi 1 kolom */
+        grid-template-columns: 1fr; 
         text-align: center;
         gap: 30px;
     }
@@ -604,9 +589,7 @@ nav {
     .footer-logo { margin-bottom: 10px; }
 }
 
-/* 3. HP KECIL (Max-width: 576px) */
 @media (max-width: 576px) {
-    /* Popup Pengaduan Center */
     .popup-card {
         width: 85%;
         right: 50%;

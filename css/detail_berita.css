@@ -1,7 +1,3 @@
-/* =========================================
-   STYLE KHUSUS HALAMAN DETAIL BERITA
-   ========================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -150,9 +146,9 @@ nav {
 
 /* Container Utama */
 .detail-container {
-    padding: 50px 80px;      /* Sesuai request margin/padding Anda */
-    max-width: 1000px;       /* Batas lebar agar teks nyaman dibaca */
-    margin: 0 auto;          /* Posisi tengah */
+    padding: 50px 80px;      
+    max-width: 1000px;       
+    margin: 0 auto;          
     background: #fff;
     min-height: 80vh;
     margin-top: 90px;
@@ -184,30 +180,30 @@ nav {
 .news-meta span {
     display: flex;
     align-items: center;
-    gap: 8px; /* Jarak antara ikon dan teks */
+    gap: 8px; 
 }
 
 /* Gambar Utama */
 .news-featured-image {
     width: 100%;
-    height: 450px;           /* Tinggi gambar fixed agar rapi */
-    object-fit: cover;       /* Agar gambar tidak gepeng */
+    height: 450px;          
+    object-fit: cover;      
     border-radius: 12px;
     margin-bottom: 40px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Isi Berita (Konten Lorem) */
+/* Isi Berita */
 .news-content {
     font-size: 1.1rem;
-    line-height: 1.8;        /* Spasi antar baris agar enak dibaca */
+    line-height: 1.8;       
     color: #333;
-    text-align: justify;     /* Rata kiri-kanan */
+    text-align: justify;    
     margin-bottom: 40px;
 }
 
 .news-content p {
-    margin-bottom: 25px;     /* Jarak antar paragraf */
+    margin-bottom: 25px;    
 }
 
 /* Tombol Kembali */
@@ -227,29 +223,24 @@ nav {
 
 .btn-back:hover {
     background-color: #34495e;
-    transform: translateX(-5px); /* Efek gerak ke kiri dikit */
+    transform: translateX(-5px); 
 }
 
 
 /* PENGADUAN */
-/* =========================================
-   STYLE FLOATING PENGADUAN (POPUP)
-   ========================================= */
-
-/* Area Tombol Mengambang (Pojok Kanan Bawah) */
 .floating-area {
     position: fixed;
     bottom: 20px;
-    right: 20px; /* Jarak dari kanan */
+    right: 20px; 
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 9999; /* Supaya selalu paling depan */
+    z-index: 9999;
 }
 
-/* Tombol Pengaduan (Pink/Peach) */
+/* Tombol Pengaduan */
 .pengaduan-btn {
-    background-color: #aac5fb; /* Warna pink sesuai gambar */
+    background-color: #aac5fb; 
     color: white;
     border: none;
     padding: 12px 25px;
@@ -261,7 +252,7 @@ nav {
     gap: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
 .pengaduan-btn:hover { background-color: #79a5ff; }
@@ -269,9 +260,9 @@ nav {
 /* --- KARTU POPUP FORM --- */
 .popup-card {
     position: fixed;
-    bottom: 90px; /* Muncul di atas tombol */
+    bottom: 90px;
     right: 20px;
-    width: 350px; /* Lebar form */
+    width: 350px;
     background: white;
     padding: 25px;
     border-radius: 15px;
@@ -331,7 +322,7 @@ nav {
 .form-group-sm textarea, 
 .form-group-sm select {
     width: 100%;
-    background: #f0f2f5; /* Abu muda */
+    background: #f0f2f5; 
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -348,7 +339,7 @@ nav {
 /* Tombol Kirim di Form */
 .btn-submit-popup {
     width: 100%;
-    background: #82d655; /* Hijau cerah */
+    background: #82d655; 
     color: white;
     border: none;
     padding: 10px;
@@ -368,7 +359,7 @@ nav {
     display: block;
     width: 100%;
     background-color: #f8f9fa;
-    border: 2px dashed #bdc3c7; /* Garis putus-putus */
+    border: 2px dashed #bdc3c7; 
     border-radius: 8px;
     padding: 20px 10px;
     text-align: center;
@@ -378,7 +369,7 @@ nav {
 }
 
 .custom-file-area:hover {
-    background-color: #e8f6ff; /* Warna berubah saat dihover */
+    background-color: #e8f6ff; 
     border-color: #3498db;
 }
 
@@ -398,10 +389,9 @@ nav {
 .file-content span {
     font-size: 0.85rem;
     font-weight: 600;
-    word-break: break-all; /* Agar nama file panjang turun ke bawah */
+    word-break: break-all; 
 }
 
-/* Jika file sudah dipilih (Class ini ditambahkan via JS nanti) */
 .custom-file-area.has-file {
     background-color: #eaffea;
     border-color: #2ecc71;
@@ -409,8 +399,8 @@ nav {
 }
 
 .custom-file-area.has-file .file-content i {
-    color: #2ecc71; /* Ikon jadi hijau */
-    class: "fa-solid fa-check-circle"; /* Ganti ikon jadi check (opsional logic di js) */
+    color: #2ecc71; 
+    class: "fa-solid fa-check-circle"; 
 }
 
 
@@ -500,11 +490,8 @@ nav {
 
 
 /* ==========================================================================
-   KODE RESPONSIVE FINAL KHUSUS DETAIL BERITA (HP & TABLET)
-   Paste kode ini di baris paling bawah file CSS Anda
-   ========================================================================== */
+   KODE RESPONSIVE  */
 
-/* 1. TABLET / LAPTOP KECIL (Max-width: 992px) */
 @media (max-width: 992px) {
     /* Navbar Toggle */
     .navbar .links { display: none; }
@@ -512,7 +499,6 @@ nav {
     .drop_menu { display: block; }
 }
 
-/* 2. HP / MOBILE (Max-width: 768px) */
 @media (max-width: 768px) {
     
     /* --- NAVBAR --- */
@@ -529,10 +515,9 @@ nav {
         right: 1rem; 
     }
 
-    /* --- KONTEN DETAIL BERITA --- */
     .detail-container {
-        padding: 30px 20px; /* Padding sisi mengecil */
-        margin-top: 70px;   /* Sesuaikan dengan tinggi navbar baru (sebelumnya 90px) */
+        padding: 30px 20px; 
+        margin-top: 70px;  
     }
 
     .news-header {
@@ -540,30 +525,30 @@ nav {
     }
 
     .news-title {
-        font-size: 1.6rem; /* Judul lebih kecil agar muat */
+        font-size: 1.6rem; 
         line-height: 1.3;
     }
 
     .news-meta {
-        flex-direction: column; /* Info tanggal & admin ditumpuk */
+        flex-direction: column; 
         align-items: flex-start;
         gap: 10px;
         font-size: 0.85rem;
     }
 
     .news-featured-image {
-        height: 200px; /* Tinggi gambar dikecilkan proporsional */
+        height: 200px; 
         margin-bottom: 25px;
     }
 
     .news-content {
-        font-size: 1rem; /* Ukuran font isi berita */
-        text-align: left; /* Rata kiri lebih rapi daripada justify di layar kecil */
+        font-size: 1rem; 
+        text-align: left;
     }
 
     /* --- FOOTER --- */
     .footer-container {
-        grid-template-columns: 1fr; /* Footer jadi 1 kolom */
+        grid-template-columns: 1fr;
         text-align: center;
         gap: 30px;
     }
@@ -578,7 +563,6 @@ nav {
     }
 }
 
-/* 3. HP KECIL (Max-width: 576px) - KHUSUS POPUP */
 @media (max-width: 576px) {
     /* Popup Pengaduan Center */
     .popup-card {
